@@ -7,7 +7,7 @@ include 'connect.php';
 
 $query = "INSERT INTO patients VALUES($vard, $time)";
 
-pg_prepare($conn, "prepare1", $query) or die ("Cannot prepare statement\n"); 
+pg_prepare(, "prepare1", $query) or die ("Cannot prepare statement\n"); 
 
 pg_execute($conn, "prepare1", array($vard, $time)) or die ("Cannot execute statement\n"); 
 
