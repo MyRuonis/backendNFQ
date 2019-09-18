@@ -6,5 +6,5 @@
  $user = "hkslzztxngudie";
  $password = "0bb0602d3e75e1a53cccef4ace38264961bc94fa4c58a1678a5a26bad1380b0f";
 
-pg_connect ("host=" . $host . "port=" . $port . "dbname=" . $dbname . "user=" . $user . "password=" . $password) or die("COULDNT CONNECT");
+pg_connect ("host=" . $host . " port=" . $port . " dbname=" . $dbname . " user=" . $user . " password=" . $password) or die("COULDNT CONNECT");
 ?>
