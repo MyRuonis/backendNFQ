@@ -9,11 +9,13 @@ try {
     $name = $_POST['name'];
     $time = strtotime($_POST['time']);
 
+    echo $time;
+
     $pdo = Connection::get()->connect();
     $stockDB = new dbaction($pdo);
     $stockDB->delete($name, $time);
 
-    header('Location: specialistas.php');
+    //header('Location: specialistas.php');
 } catch (\PDOException $e) {
     echo $e->getMessage();
 }
