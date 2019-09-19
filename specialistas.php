@@ -34,8 +34,8 @@ try {
                     <?php foreach ($stocks as $stock) : ?>
                         <tr>
                             <form action="/delPat.php" method="post">
-                                <td><?php echo htmlspecialchars($stock['name']); ?></td>
-                                <td><?php echo htmlspecialchars($stock['time']); ?></td>
+                                <td name='name'><?php echo htmlspecialchars($stock['name']); ?></td>
+                                <td name='time'><?php echo htmlspecialchars($stock['time']); ?></td>
                                 <td><input type="submit" value="Aptarnautas"></td>
                             </form>
                         </tr>

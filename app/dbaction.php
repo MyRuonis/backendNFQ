@@ -10,11 +10,15 @@ class dbaction
         $this->pdo = $pdo;
     }
 
-    public function delete($name) {
-        $sql = 'DELETE FROM patients WHERE name = :name';
+    public function delete($name, $time) {
+        $sql = 'DELETE FROM patients '
+            . 'WHERE name = :name '
+            . 'WHERE time = :time ';
  
         $stmt = $this->pdo->prepare($sql);
+        
         $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':time', $time);
  
         $stmt->execute();
     }
