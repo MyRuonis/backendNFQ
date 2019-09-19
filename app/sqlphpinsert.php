@@ -2,7 +2,7 @@
 
 namespace namesql;
 
-class Sqlhphpinsert
+class Sqlinsert
 {
     protected $pdo = null;
 
