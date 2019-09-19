@@ -10,14 +10,14 @@ class Sqlhphpinsert
         $this->pdo = $pdo;
     }
 
-    public function insertLine($vard) {
+    public function insertLine($name) {
 
         $time = date("H:i:s");
         
-        $sql = 'INSERT INTO patients(name,time) VALUES(:vard,:time)';
+        $sql = 'INSERT INTO patients(name,time) VALUES(:name,:time)';
         $stmt = $this->pdo->prepare($sql);
         
-        $stmt->bindValue(':name', $vard);
+        $stmt->bindValue(':name', $name);
         $stmt->bindValue(':time', $time);
         
         $stmt->execute();
