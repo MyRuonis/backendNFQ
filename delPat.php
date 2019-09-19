@@ -9,7 +9,7 @@ try {
     $name = $_POST['name'];
     $time = $_POST['time'];
 
-    echo "$time<br>";
+    echo "$name<br>$time<br>";
 
     $pdo = Connection::get()->connect();
     $stockDB = new dbaction($pdo);
