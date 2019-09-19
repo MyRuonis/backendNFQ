@@ -7,7 +7,7 @@ use namesql\dbaction as dbaction;
 
 try {
     $name = $_POST['name'];
-    $time = $_POST['time'];
+    $time = strtotime($_POST['time']);
 
     $pdo = Connection::get()->connect();
     $stockDB = new dbaction($pdo);
