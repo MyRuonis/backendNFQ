@@ -22,7 +22,8 @@ class Sqlhphpinsert
         
         $stmt->execute();
         
-        return $this->pdo->lastInsertId('stocks_id_seq');
+        return 0;
+        //return $this->pdo->lastInsertId('stocks_id_seq');
     }
 }
 
