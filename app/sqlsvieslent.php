@@ -13,7 +13,8 @@ class Sqlsvies
     public function all() {
         $stmt = $this->pdo->query('SELECT name, time '
                 . 'FROM patients '
-                . 'ORDER BY time');
+                . 'ORDER BY time '
+                . 'LIMIT 10;');
         $stocks = [];
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $stocks[] = [
