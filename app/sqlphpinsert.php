@@ -21,9 +21,6 @@ class Sqlhphpinsert
         $stmt->bindValue(':time', $time);
         
         $stmt->execute();
-        
-        return 0;
-        //return $this->pdo->lastInsertId('stocks_id_seq');
     }
 }
 

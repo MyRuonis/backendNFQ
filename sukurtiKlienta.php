@@ -13,8 +13,11 @@ try {
 
     $insertDemo = new Sqlhphpinsert($pdo);
 
-    $id = $insertDemo->insertLine($vard);
-    echo 'The stock has been inserted with the id ' . $id . '<br>';
+    $insertDemo->insertLine($vard);
+
+    echo "Sėkmingai įvykdyta.<br>";
+    echo "<a href='svieslente.php'>Svieslentė</a>";
+
 
 } catch (\PDOException $e) {
     echo $e->getMessage();
