@@ -5,6 +5,7 @@ require 'vendor/autoload.php';
 use namesql\Connection as Connection;
 use namesql\dbaction as dbaction;
 
+try {
     $name = $_POST['name'];
     $time = $_POST['time'];
 
@@ -13,4 +14,7 @@ use namesql\dbaction as dbaction;
     $stockDB->delete($name, $time);
 
     header('Location: specialistas.php');
+} catch (\PDOException $e) {
+    echo $e->getMessage();
+}
 ?>
