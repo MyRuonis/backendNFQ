@@ -4,6 +4,12 @@ namespace namesql;
 
 class Sqlhphpinsert
 {
+    protected $pdo = null;
+
+    public function __construct($pdo) {
+        $this->pdo = $pdo;
+    }
+
     public function insertLine($vard) {
 
         $time = date("H:i:s");
