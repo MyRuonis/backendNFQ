@@ -7,7 +7,7 @@ use namesql\dbaction as dbaction;
 
 try {
     $name = $_POST['name'];
-    $time = strtotime($_POST['time']);
+    $time = $_POST['time'];
 
     echo "$time<br>";
 
