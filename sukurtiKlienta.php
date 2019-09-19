@@ -3,7 +3,7 @@
 require 'vendor/autoload.php';
  
 use namesql\Connection as Connection;
-use namesql\Sqlinsert as Sqlinsert;
+use namesql\dbaction as dbaction;
 
 try {
     $vard = $_GET['vardas'];
@@ -11,7 +11,7 @@ try {
 
     //echo 'A connection to the PostgreSQL database sever has been established successfully.';
 
-    $insertDemo = new Sqlinsert($pdo);
+    $insertDemo = new dbaction($pdo);
 
     $insertDemo->insertLine($vard);
 

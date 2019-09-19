@@ -2,12 +2,12 @@
 require 'vendor/autoload.php';
  
 use namesql\Connection as Connection;
-use namesql\Sqlsvies as Sqlsvies;
+use namesql\dbaction as dbaction;
  
 try {
     $pdo = Connection::get()->connect();
 
-    $stockDB = new Sqlsvies($pdo);
+    $stockDB = new dbaction($pdo);
 
     $stocks = $stockDB->all();
 } catch (\PDOException $e) {
