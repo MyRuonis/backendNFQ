@@ -35,8 +35,8 @@ try {
                         <tr>
                             <form action="/delPat.php" method="post">
                                 <?php $value1=htmlspecialchars($stock['name']); $value2=htmlspecialchars($stock['time']);?>
-                                <td><input type="hidden" name="name" value="<?php echo $value1; ?>"><br></td>
-                                <td><input type="hidden" name="time"><?php echo $value2; ?><br></td>
+                                <td><input type="hidden" name="name" value="<?php echo $value1; ?>"><?php echo $value1; ?><br></td>
+                                <td><input type="hidden" name="time" value="<?php echo $value2; ?>"><?php echo $value2; ?><br></td>
                                 <td><input type="submit" value="Aptarnautas"></td>
                             </form>
                         </tr>
