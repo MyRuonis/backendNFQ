@@ -12,6 +12,8 @@ class Sqlinsert
 
     public function insertLine($name) {
 
+        date_default_timezone_set(Europe/Vilnius);
+        
         $time = date("H:i:s");
         
         $sql = 'INSERT INTO patients(name,time) VALUES(:name,:time)';
