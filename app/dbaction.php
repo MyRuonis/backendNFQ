@@ -13,7 +13,7 @@ class dbaction
     public function delete($name, $time) {
         $sql = 'DELETE FROM patients '
             . 'WHERE name = :name '
-            . 'WHERE time = :time';
+            . 'AND time = :time';
  
         $stmt = $this->pdo->prepare($sql);
         
