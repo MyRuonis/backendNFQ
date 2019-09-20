@@ -13,9 +13,9 @@ try {
     $pdo = Connection::get()->connect();
 
     //echo 'A connection to the PostgreSQL database sever has been established successfully.';
-    echo "1";
+
     $insertDemo = new dbpatient($pdo);
-    echo "2";
+
     $insertDemo->insertLine($vard, $specialistas);
 
     echo "Užregistruota sėkmingai.<br>";
@@ -23,6 +23,6 @@ try {
 
 
 } catch (\PDOException $e) {
-    //echo $e->getMessage();
+    echo $e->getMessage();
     echo "Įvyko klaida, kreipkitės telefonu";
 }
