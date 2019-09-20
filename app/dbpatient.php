@@ -2,7 +2,7 @@
 
 namespace namesql;
 
-class dbaction
+class dbpatient
 {
     protected $pdo = null;
 
@@ -10,44 +10,45 @@ class dbaction
         $this->pdo = $pdo;
     }
 
-    public function delete($name, $time) {
+    public function delete($ID) {
         $sql = 'DELETE FROM patients '
-            . 'WHERE name = :name '
-            . 'AND time = :time';
+            . 'WHERE ID = :ID ';
  
         $stmt = $this->pdo->prepare($sql);
         
-        $stmt->bindValue(':name', $name);
-        $stmt->bindValue(':time', $time);
+        $stmt->bindValue(':ID', $ID);
  
         $stmt->execute();
     }
 
-    public function insertLine($name) {
+    public function insertLine($name, $specialistas) {
 
         date_default_timezone_set('Europe/Vilnius');
 
         $time = date("H:i:s");
+        $aptarn = FALSE;
         
-        $sql = 'INSERT INTO patients(name,time) VALUES(:name,:time)';
+        $sql = 'INSERT INTO patients(name, regTime, aptarnautas, specialistas) VALUES(:name,:time,:aptarn,:specialistas)';
         $stmt = $this->pdo->prepare($sql);
         
         $stmt->bindValue(':name', $name);
-        $stmt->bindValue(':time', $time);
+        $stmt->bindValue(':regTime', $time);
+        $stmt->bindValue(':aptarnautas', $aptarn);
+        $stmt->bindValue(':specialistas', $specialistas);
         
         $stmt->execute();
     }
 
     public function all() {
-        $stmt = $this->pdo->query('SELECT name, time '
+        $stmt = $this->pdo->query('SELECT name, regtime '
                 . 'FROM patients '
-                . 'ORDER BY time '
+                . 'ORDER BY regTime '
                 . 'LIMIT 10;');
         $stocks = [];
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $stocks[] = [
                 'name' => $row['name'],
-                'time' => $row['time']
+                'regtime' => $row['regtime']
             ];
         }
         return $stocks;
