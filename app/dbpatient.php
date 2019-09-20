@@ -82,6 +82,7 @@ class dbpatient
         $stmt = $this->pdo->query('SELECT name, bendrasSugaistasLaikas, aptarnautiKlientai '
                 . 'FROM docs;');
         $time = date("H:i:s");
+        echo "0";
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             if($row['name'] == $specialistas)
             {
@@ -93,7 +94,7 @@ class dbpatient
                 $time = $time_seconds / $row['aptarnautiklientai'];
             }
         }
-
+        echo "1";
         $stmt = $this->pdo->query('SELECT id '
                 . 'FROM patients '
                 . 'WHERE specialistas = "' . $specialistas . '" '
@@ -102,7 +103,7 @@ class dbpatient
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $klientuKiekis += 1;
         }
-
+        echo "2";
         return date("H:i:s", $time * $klientuKiekis);
     }
 }
