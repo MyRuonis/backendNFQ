@@ -25,8 +25,9 @@ try {
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>TimeRegistered</th>
+                        <th>Vardas</th>
+                        <th>Užsiregistravo</th>
+                        <th>Specialstas</th>
                     </tr>
                 </thead>
                 <tbody>
