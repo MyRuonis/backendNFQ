@@ -23,6 +23,6 @@ try {
 
 
 } catch (\PDOException $e) {
-    echo $e->getMessage();
+    //echo $e->getMessage();
     echo "Įvyko klaida, kreipkitės telefonu";
 }
