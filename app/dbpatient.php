@@ -29,14 +29,25 @@ class dbpatient
  
         $stmt->execute();
 
+        $time = date("H:i:s", strtotime($time2) - strtotime($time));
+
+        $stmt = $this->pdo->query('SELECT bendrassugaistaslaikas '
+                . 'FROM docs '
+                . 'WHERE name = ' . $specialistas . ";");
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $time2 = $row['bendrassugaistaslaikas'];
+        }
+
+        $time = date("H:i:s", strtotime($time2) + strtotime($time));
+
         $sql = 'UPDATE docs '
-        . 'SET aptarnautiklientai = aptarnautiKlientai + 1, '
-        . 'bendrassugaistaslaikas = bendrasSugaistasLaikas + :time '
+        . 'SET aptarnautiklientai = aptarnautiklientai + 1, '
+        . 'bendrassugaistaslaikas = :time '
         . 'WHERE name = :name;';
 
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->bindValue(':time', $time2 - $time);
+        $stmt->bindValue(':time', $time);
         $stmt->bindValue(':name', $specialistas);
 
         $stmt->execute();
@@ -54,7 +65,6 @@ class dbpatient
         $stmt->bindValue(':name', $name);
         $stmt->bindValue(':regTime', $regTime);
         $stmt->bindValue(':endTime', $regTime);
-        //$stmt->bindValue(':aptarnautas', 0, PDO::PARAM_INT); // PDO::PARAM_BOOL
         $stmt->bindValue(':specialistas', $specialistas);
         
         $stmt->execute();
@@ -75,6 +85,10 @@ class dbpatient
             ];
         }
         return $stocks;
+    }
+
+    public function kiekLaukti($name, $regTime, $specialistas){
+        
     }
 }
 
