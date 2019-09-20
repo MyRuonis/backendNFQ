@@ -34,7 +34,7 @@ class dbpatient
         $stmt->bindValue(':name', $name);
         $stmt->bindValue(':regTime', $regTime);
         $stmt->bindValue(':endTime', $regTime);
-        $stmt->bindValue(':aptarnautas', $aptarnautas);
+        $stmt->bindValue(':aptarnautas', $aptarnautas, PDO::PARAM_BOOL);
         $stmt->bindValue(':specialistas', $specialistas);
         
         $stmt->execute();
