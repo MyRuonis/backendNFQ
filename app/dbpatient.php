@@ -29,7 +29,7 @@ class dbpatient
  
         $stmt->execute();
 
-        $sql = 'UPDATE docs'
+        $sql = 'UPDATE docs '
         . 'SET aptarnautiklientai = aptarnautiKlientai + 1, '
         . 'bendrassugaistaslaikas = bendrasSugaistasLaikas + :time '
         . 'WHERE name = :name;';
