@@ -79,6 +79,8 @@ class dbpatient
     }
 
     public function kiekLaukti($name, $regTime, $specialistas){
+        date_default_timezone_set('Europe/Vilnius');
+
         $stmt = $this->pdo->query('SELECT name, bendrasSugaistasLaikas, aptarnautiKlientai '
                 . 'FROM docs;');
         $time = date("H:i:s");
@@ -108,7 +110,7 @@ class dbpatient
 
         $laikasDabar = date("H:i:s");
 
-        echo date("H:i:s") . "<br>" . date("H:i:s", $time * klientuKiekis);
+        echo date("H:i:s") . "<br>" . date("H:i:s", $time * klientuKiekis) . "<br>";
 
         $laikasDabar = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $laikasDabar);
         sscanf($laikasDabar, "%d:%d:%d", $hours, $minutes, $seconds);
