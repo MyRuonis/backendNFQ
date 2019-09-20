@@ -79,18 +79,19 @@ class dbpatient
     }
 
     public function kiekLaukti($name, $regTime, $specialistas){
-        $stmt = $this->pdo->query('SELECT bendrasSugaistasLaikas, aptarnautiKlientai '
-                . 'FROM docs '
-                . 'WHERE name="'. $specialistas .'";');
+        $stmt = $this->pdo->query('SELECT name, bendrasSugaistasLaikas, aptarnautiKlientai '
+                . 'FROM docs;');
         $time = date("H:i:s");
-        echo "1";
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $str_time = $row['bendrassugaistaslaikas'];
-            $str_time = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $str_time);
-            sscanf($str_time, "%d:%d:%d", $hours, $minutes, $seconds);
-            $time_seconds = $hours * 3600 + $minutes * 60 + $seconds;
+            if($row['name'] == $specialistas)
+            {
+                $str_time = $row['bendrassugaistaslaikas'];
+                $str_time = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $str_time);
+                sscanf($str_time, "%d:%d:%d", $hours, $minutes, $seconds);
+                $time_seconds = $hours * 3600 + $minutes * 60 + $seconds;
 
-            $time = $time_seconds / $row['aptarnautiklientai'];
+                $time = $time_seconds / $row['aptarnautiklientai'];
+            }
         }
 
         $stmt = $this->pdo->query('SELECT id '
