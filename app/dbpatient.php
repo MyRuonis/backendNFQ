@@ -40,7 +40,7 @@ class dbpatient
     }
 
     public function all() {
-        $stmt = $this->pdo->query('SELECT name, regtime '
+        $stmt = $this->pdo->query('SELECT name, regtime, specialistas '
                 . 'FROM patients '
                 . 'ORDER BY regTime '
                 . 'LIMIT 10;');
@@ -49,6 +49,7 @@ class dbpatient
             $stocks[] = [
                 'name' => $row['name'],
                 'regtime' => $row['regtime'],
+                'specialistas' => $row['specialistas']
             ];
         }
         return $stocks;
