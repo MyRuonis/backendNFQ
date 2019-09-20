@@ -32,7 +32,7 @@ class dbpatient
         $time = date("H:i:s", strtotime($time2) - strtotime($time));
 
         $sql = 'UPDATE docs '
-        . 'SET aptarnautiklientai = aptarnautiklientai + 1, '
+        . 'SET aptarnautiklientai += 1, '
         . 'bendrassugaistaslaikas += :time '
         . 'WHERE name = :name;';
 
