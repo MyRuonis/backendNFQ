@@ -2,12 +2,12 @@
 require 'vendor/autoload.php';
  
 use namesql\Connection as Connection;
-use namesql\dbaction as dbaction;
+use namesql\dbpatient as dbpatient;
  
 try {
     $pdo = Connection::get()->connect();
 
-    $stockDB = new dbaction($pdo);
+    $stockDB = new dbpatient($pdo);
 
     $stocks = $stockDB->all();
 } catch (\PDOException $e) {
@@ -21,7 +21,7 @@ try {
     </head>
     <body>
         <div class="container">
-            <h1>Stock List</h1>
+            <h1>Klientai</h1>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -33,10 +33,10 @@ try {
                 <tbody>
                     <?php foreach ($stocks as $stock) : ?>
                         <tr>
-                            <form action="/delPat.php" method="post">
-                                <?php $value1=htmlspecialchars($stock['name']); $value2=htmlspecialchars($stock['time']);?>
+                            <form action="/delPat.php" method="get">
+                                <?php $value1=htmlspecialchars($stock['name']); $value2=htmlspecialchars($stock['regtime']);?>
                                 <td><input type="hidden" name="name" value="<?php echo $value1; ?>"><?php echo $value1; ?><br></td>
-                                <td><input type="hidden" name="time" value="<?php echo $value2; ?>"><?php echo $value2; ?><br></td>
+                                <td><input type="hidden" name="regtime" value="<?php echo $value2; ?>"><?php echo $value2; ?><br></td>
                                 <td><input type="submit" value="Aptarnautas"></td>
                             </form>
                         </tr>
