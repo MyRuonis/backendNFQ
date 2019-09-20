@@ -31,19 +31,9 @@ class dbpatient
 
         $time = date("H:i:s", strtotime($time2) - strtotime($time));
 
-        $stmt = $this->pdo->query('SELECT bendrassugaistaslaikas '
-                . 'FROM docs '
-                . 'WHERE name = ?;');
-        $stmt->bindValue(1, $specialistas);
-        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $time2 = $row['bendrassugaistaslaikas'];
-        }
-
-        $time = date("H:i:s", strtotime($time2) + strtotime($time));
-
         $sql = 'UPDATE docs '
         . 'SET aptarnautiklientai = aptarnautiklientai + 1, '
-        . 'bendrassugaistaslaikas = :time '
+        . 'bendrassugaistaslaikas += :time '
         . 'WHERE name = :name;';
 
         $stmt = $this->pdo->prepare($sql);
