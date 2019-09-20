@@ -48,7 +48,7 @@ class dbpatient
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $stocks[] = [
                 'name' => $row['name'],
-                'regtime' => $row['regtime']
+                'regtime' => $row['regtime'],
             ];
         }
         return $stocks;
