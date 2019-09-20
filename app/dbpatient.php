@@ -27,12 +27,13 @@ class dbpatient
 
         $regTime = date("H:i:s");
 
-        $sql = 'INSERT INTO patients(name, regTime, aptarnautas, specialistas) VALUES(:name,:regTime,:aptarnautas,:specialistas);';
+        $sql = 'INSERT INTO patients(name, regTime, endTime, aptarnautas, specialistas) VALUES(:name,:regTime,:endTime,:aptarnautas,:specialistas);';
         $stmt = $this->pdo->prepare($sql);
         
         $stmt->bindValue(':name', $name);
         $stmt->bindValue(':regTime', $regTime);
-        $stmt->bindValue(':aptarnautas', 'f');
+        $stmt->bindValue(':endTime', $regTime);
+        $stmt->bindValue(':aptarnautas', FALSE);
         $stmt->bindValue(':specialistas', $specialistas);
         
         $stmt->execute();
