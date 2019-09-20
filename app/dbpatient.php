@@ -10,13 +10,15 @@ class dbpatient
         $this->pdo = $pdo;
     }
 
-    public function delete($ID) {
+    public function delete($vard, $time) {
         $sql = 'DELETE FROM patients '
-            . 'WHERE ID = :ID ';
+            . 'WHERE name = :vard '
+            . 'AND regtime = :time';
  
         $stmt = $this->pdo->prepare($sql);
         
-        $stmt->bindValue(':ID', $ID);
+        $stmt->bindValue(':vard', $vard);
+        $stmt->bindValue(':time', $time);
  
         $stmt->execute();
     }
