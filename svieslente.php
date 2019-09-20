@@ -27,7 +27,7 @@ try {
                     <tr>
                         <th>Vardas</th>
                         <th>Užsiregistravo</th>
-                        <th>Specialstas</th>
+                        <th>Specialistas</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,6 +35,7 @@ try {
                         <tr>
                             <td><?php echo htmlspecialchars($stock['name']); ?></td>
                             <td><?php echo htmlspecialchars($stock['regTime']); ?></td>
+                            <td><?php echo htmlspecialchars($stock['specialistas']); ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
