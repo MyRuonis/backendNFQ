@@ -98,7 +98,7 @@ class dbpatient
         $stmt = $this->pdo->query('SELECT id, specialistas, regTime '
                 . 'FROM patients '
                 . 'WHERE aptarnautas = false;');
-        $klientuKiekis = date("H:i:s");
+        $klientuKiekis = 0;
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             if($row['specialistas'] == $specialistas && $row['regTime'] < $regTime)
             {
