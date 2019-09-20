@@ -32,7 +32,7 @@ class dbpatient
         
         $stmt->bindValue(':name', $name);
         $stmt->bindValue(':regTime', $regTime);
-        $stmt->bindValue(':aptarnautas', FALSE);
+        $stmt->bindValue(':aptarnautas', 'false');
         $stmt->bindValue(':specialistas', $specialistas);
         
         $stmt->execute();
