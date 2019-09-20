@@ -17,17 +17,18 @@ try {
 
 <body>
  
- <form action="/sukurtiKlienta.php" method="post">
+<form action="/sukurtiKlienta.php" method="post" id="forma">
   Vardas: <input type="text" name="vardas"><br>
-  Daktaras: <select>
-              <?php foreach($stocks as $stock) :
-                  $value=htmlspecialchars($stock['name']);
-                  echo "<option value=specialistas>" . $value . "</option>";
-              endforeach;
-              ?>
-            </select> 
-  <br>
+    <br>
   <input type="submit" value="Submit">
 </form>
+
+Daktaras: <select name='specialistas' from="forma">
+            <?php foreach($stocks as $stock) :
+                  $value=htmlspecialchars($stock['name']);
+                  echo "<option value=". $value . ">" . $value . "</option>";
+              endforeach;
+            ?>
+          </select> 
 
 <body>
