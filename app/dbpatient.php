@@ -63,6 +63,7 @@ class dbpatient
     public function all() {
         $stmt = $this->pdo->query('SELECT name, regtime, specialistas '
                 . 'FROM patients '
+                . 'WHERE aptarnautas = false '
                 . 'ORDER BY regtime '
                 . 'LIMIT 10;');
         $stocks = [];
