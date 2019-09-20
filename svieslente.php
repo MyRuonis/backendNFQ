@@ -59,7 +59,7 @@ try {
                 <tr>
                     <td><?php echo htmlspecialchars($stock['name']); ?></td>
                     <td><?php echo htmlspecialchars($stock['regtime']); ?></td>
-                    <td><?php echo $stockDB->kiekLaukti($stock['name'], $stock['regtime'], $stock['specialistas'])?></td>
+                    <td><?php echo $stockDB->kiekLaukti($stock['name'], $stock['regtime'], $stock['specialistas']);?></td>
                     <td><?php echo htmlspecialchars($stock['specialistas']); ?></td>
                 </tr>
             <?php endforeach; ?>

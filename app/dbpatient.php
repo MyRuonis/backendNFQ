@@ -79,6 +79,8 @@ class dbpatient
     }
 
     public function kiekLaukti($name, $regTime, $specialistas){
+
+        echo "1";
         $stmt = $this->pdo->query('SELECT bendrassugaistaslaikas, aptarnautiklientai '
                 . 'FROM docs '
                 . 'WHERE name = "' . $specialistas . '";');
@@ -92,6 +94,7 @@ class dbpatient
             $time = $time_seconds / $row['aptarnautiklientai'];
         }
 
+        echo "2";
         $stmt = $this->pdo->query('SELECT id '
                 . 'FROM patients '
                 . 'WHERE specialistas = "' . $specialistas . '" '
@@ -101,6 +104,7 @@ class dbpatient
             $klientuKiekis += 1;
         }
 
+        echo "3";
         return date("H:i:s", $time * $klientuKiekis);
     }
 }
