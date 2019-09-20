@@ -8,10 +8,12 @@ use namesql\dbpatient as dbpatient;
 try {
     $name = $_GET['name'];
     $time = $_GET['regtime'];
+    $specialistas = $_GET['specialistas'];
 
-    $pdo = Connection::get()->connect();
-    $stockDB = new dbpatient($pdo);
-    $stockDB->delete($name, $time);
+    echo "1";
+    $pdo = Connection::get()->connect();echo "2";
+    $stockDB = new dbpatient($pdo);echo "3";
+    $stockDB->delete($name, $time, $specialistas);
 
     header('Location: specialistas.php');
 } catch (\PDOException $e) {
