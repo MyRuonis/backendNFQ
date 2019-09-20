@@ -108,12 +108,13 @@ class dbpatient
 
         $laikasDabar = date("H:i:s");
 
-        $str_time = $laikasDabar->format('Y-m-d H:i:s');;
-        $str_time = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $str_time);
-        sscanf($str_time, "%d:%d:%d", $hours, $minutes, $seconds);
-        $laikasDabar = $hours * 3600 + $minutes * 60 + $seconds;
+        echo "1";
+        $str_time = $laikasDabar->format('Y-m-d H:i:s');echo "2";
+        $str_time = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $str_time);echo "3";
+        sscanf($str_time, "%d:%d:%d", $hours, $minutes, $seconds);echo "4";
+        $laikasDabar = $hours * 3600 + $minutes * 60 + $seconds;echo "5";
 
-        $time = ($time * $klientuKiekis) + $laikasDabar;
+        $time = ($time * $klientuKiekis) + $laikasDabar;echo "6";
 
         return date("H:i:s", $time);
     }
