@@ -97,12 +97,12 @@ class dbpatient
             }
         }
 
-        $stmt = $this->pdo->query('SELECT id, specialistas, regTime '
+        $stmt = $this->pdo->query('SELECT name, specialistas, regTime '
                 . 'FROM patients '
                 . 'WHERE aptarnautas = false;');
         $klientuKiekis = 0;
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            if($row['specialistas'] == $specialistas && $row['regTime'] < $regTime)
+            if($row['specialistas'] == $specialistas && $row['regTime'] < $regTime && $row['name'] != $name)
             {
                 $klientuKiekis += 1;
             }
