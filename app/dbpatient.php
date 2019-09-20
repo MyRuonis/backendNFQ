@@ -42,7 +42,7 @@ class dbpatient
     public function all() {
         $stmt = $this->pdo->query('SELECT name, regtime, specialistas '
                 . 'FROM patients '
-                . 'ORDER BY regTime '
+                . 'ORDER BY regtime '
                 . 'LIMIT 10;');
         $stocks = [];
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {

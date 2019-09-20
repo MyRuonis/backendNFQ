@@ -34,7 +34,7 @@ try {
                     <?php foreach ($stocks as $stock) : ?>
                         <tr>
                             <td><?php echo htmlspecialchars($stock['name']); ?></td>
-                            <td><?php echo htmlspecialchars($stock['regTime']); ?></td>
+                            <td><?php echo htmlspecialchars($stock['regtime']); ?></td>
                             <td><?php echo htmlspecialchars($stock['specialistas']); ?></td>
                         </tr>
                     <?php endforeach; ?>
