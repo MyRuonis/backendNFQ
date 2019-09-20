@@ -8,6 +8,8 @@ use namesql\dbpatient as dbpatient;
 try {
     $vard = $_POST['vardas'];
     $specialistas = $_POST['specialistas'];
+
+    echo $vard . " " . $specialistas . "<br>";
     $pdo = Connection::get()->connect();
 
     //echo 'A connection to the PostgreSQL database sever has been established successfully.';
