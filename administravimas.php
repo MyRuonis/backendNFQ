@@ -2,7 +2,7 @@
 require 'vendor/autoload.php';
  
 use namesql\Connection as Connection;
-use namesql\dbdoc as dbaction;
+use namesql\dbdoc as dbdoc;
  
 try {
     $pdo = Connection::get()->connect();
