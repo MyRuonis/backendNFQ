@@ -19,16 +19,16 @@ try {
  
 <form action="/sukurtiKlienta.php" method="post" id="forma">
   Vardas: <input type="text" name="vardas"><br>
-    <br>
-  <input type="submit" value="Submit">
-</form>
-
-Daktaras: <select name='specialistas' from="forma">
+  Daktaras: <select name='specialistas' form="forma">
             <?php foreach($stocks as $stock) :
                   $value=htmlspecialchars($stock['name']);
                   echo "<option value=". $value . ">" . $value . "</option>";
               endforeach;
             ?>
           </select> 
+
+  <br>
+  <input type="submit" value="Submit">
+</form>
 
 <body>
