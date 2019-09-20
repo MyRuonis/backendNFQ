@@ -79,22 +79,22 @@ class dbpatient
     }
 
     public function kiekLaukti($name, $regTime, $specialistas){
-
-        echo "1";
         $stmt = $this->pdo->query('SELECT bendrassugaistaslaikas, aptarnautiklientai '
                 . 'FROM docs '
                 . 'WHERE name = "' . $specialistas . '";');
         $time = date("H:i:s");
+        echo "1";
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $str_time = $row['bendrassugaistaslaikas'];
+            echo "2";
             $str_time = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $str_time);
             sscanf($str_time, "%d:%d:%d", $hours, $minutes, $seconds);
             $time_seconds = $hours * 3600 + $minutes * 60 + $seconds;
+            echo "3";
 
             $time = $time_seconds / $row['aptarnautiklientai'];
         }
 
-        echo "2";
         $stmt = $this->pdo->query('SELECT id '
                 . 'FROM patients '
                 . 'WHERE specialistas = "' . $specialistas . '" '
@@ -104,7 +104,6 @@ class dbpatient
             $klientuKiekis += 1;
         }
 
-        echo "3";
         return date("H:i:s", $time * $klientuKiekis);
     }
 }
