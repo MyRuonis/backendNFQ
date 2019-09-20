@@ -26,14 +26,13 @@ class dbpatient
         date_default_timezone_set('Europe/Vilnius');
 
         $regTime = date("H:i:s");
-        $aptarnautas = FALSE;
         
         $sql = 'INSERT INTO patients(name, regTime, aptarnautas, specialistas) VALUES(:name,:regTime,:aptarnautas,:specialistas);';
         $stmt = $this->pdo->prepare($sql);
         
         $stmt->bindValue(':name', $name);
         $stmt->bindValue(':regTime', $regTime);
-        $stmt->bindValue(':aptarnautas', $aptarnautas);
+        $stmt->bindValue(':aptarnautas', 'FALSE');
         $stmt->bindValue(':specialistas', $specialistas);
         
         $stmt->execute();
