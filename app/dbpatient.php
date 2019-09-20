@@ -34,7 +34,7 @@ class dbpatient
         $stmt = $this->pdo->query('SELECT bendrassugaistaslaikas '
                 . 'FROM docs '
                 . 'WHERE name = :name;');
-        $stmt->bindValue(':namee', $specialistas);
+        $stmt->bindValue(':name', $specialistas);
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $time2 = $row['bendrassugaistaslaikas'];
         }
