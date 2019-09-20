@@ -32,7 +32,7 @@ try {
                 <tbody>
                     <?php foreach ($stocks as $stock) : ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($stock['name']) ?></td>
+                            <td><?php echo htmlspecialchars($stock['name']); ?></td>
                             <td><?php echo htmlspecialchars($stock['regTime']); ?></td>
                         </tr>
                     <?php endforeach; ?>
