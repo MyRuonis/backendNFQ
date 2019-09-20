@@ -33,7 +33,7 @@ class dbpatient
 
         $sql = 'UPDATE docs '
         . 'SET aptarnautiklientai = aptarnautiklientai + 1, '
-        . 'bendrassugaistaslaikas = bendrassugaistaslaikas + "' . $time . '" '
+        . 'bendrassugaistaslaikas = bendrassugaistaslaikas + :time '
         . 'WHERE name = :name;';
 
         $stmt = $this->pdo->prepare($sql);
