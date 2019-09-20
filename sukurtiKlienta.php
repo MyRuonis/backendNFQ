@@ -3,22 +3,24 @@
 require 'vendor/autoload.php';
  
 use namesql\Connection as Connection;
-use namesql\dbaction as dbaction;
+use namesql\dbpatient as dbpatient;
 
 try {
-    $vard = $_GET['vardas'];
+    $vard = $_POST['vardas'];
+    $specialistas = $_POST['specialistas'];
     $pdo = Connection::get()->connect();
 
     //echo 'A connection to the PostgreSQL database sever has been established successfully.';
 
-    $insertDemo = new dbaction($pdo);
+    $insertDemo = new dbpatient($pdo);
 
-    $insertDemo->insertLine($vard);
+    $insertDemo->insertLine($vard, $specialistas);
 
-    echo "Sėkmingai įvykdyta.<br>";
+    echo "Užregistruota sėkmingai.<br>";
     echo "<a href='svieslente.php'>Svieslentė</a>";
 
 
 } catch (\PDOException $e) {
-    echo $e->getMessage();
+    //echo $e->getMessage();
+    echo "Įvyko klaida, kreipkitės telefonu";
 }

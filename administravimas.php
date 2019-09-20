@@ -22,10 +22,11 @@ try {
   Daktaras: <select>
               <?php foreach($stocks as $stock) :
                   $value=htmlspecialchars($stock['name']);
-                  echo "<option value=" . $value . ">" . $value . "</option>";
+                  echo "<option value=specialistas>" . $value . "</option>";
               endforeach;
               ?>
             </select> 
+  <br>
   <input type="submit" value="Submit">
 </form>
 
