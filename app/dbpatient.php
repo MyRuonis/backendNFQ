@@ -10,16 +10,35 @@ class dbpatient
         $this->pdo = $pdo;
     }
 
-    public function delete($vard, $time) {
-        $sql = 'DELETE FROM patients '
-            . 'WHERE name = :vard '
-            . 'AND regtime = :time';
- 
+    public function delete($vard, $time, $specialistas) {
+        date_default_timezone_set('Europe/Vilnius');
+
+        $time2 = date("H:i:s");
+
+        $sql = 'UPDATE patients '
+            . 'SET endtime = :time, '
+            . 'aptarnautas = true '
+            . 'WHERE name = :name '
+            . 'AND regtime = :time2;';
+
         $stmt = $this->pdo->prepare($sql);
-        
-        $stmt->bindValue(':vard', $vard);
-        $stmt->bindValue(':time', $time);
+
+        $stmt->bindValue(':time', $time2);
+        $stmt->bindValue(':name', $vard);
+        $stmt->bindValue(':time2', $time);
  
+        $stmt->execute();
+
+        $sql = 'UPDATE docs'
+        . 'SET aptarnautiklientai = aptarnautiKlientai + 1, '
+        . 'bendrassugaistaslaikas = bendrasSugaistasLaikas + :time '
+        . 'WHERE name = :name;';
+
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->bindValue(':time', $time2 - $time);
+        $stmt->bindValue(':name', $specialistas);
+
         $stmt->execute();
     }
 
