@@ -184,10 +184,10 @@ class dbpatient
 
         $sql = 'UPDATE patients '
         . 'SET name = :name, '
-        . 'regtime = :regtime '
-        . 'endtime = :endtime '
-        . 'aptarnautas = :aptarnautas '
-        . 'specialistas = :specialistas '
+        . 'regtime = :regtime, '
+        . 'endtime = :endtime, '
+        . 'aptarnautas = :aptarnautas, '
+        . 'specialistas = :specialistas, '
         . 'WHERE id = :id;';
 
         $stmt = $this->pdo->prepare($sql);
@@ -203,10 +203,10 @@ class dbpatient
 
         $sql = 'UPDATE patients '
         . 'SET name = :name, '
-        . 'regtime = :regtime '
-        . 'endtime = :endtime '
-        . 'aptarnautas = :aptarnautas '
-        . 'specialistas = :specialistas '
+        . 'regtime = :regtime, '
+        . 'endtime = :endtime, '
+        . 'aptarnautas = :aptarnautas, '
+        . 'specialistas = :specialistas, '
         . 'WHERE id = :id;';
 
         $stmt = $this->pdo->prepare($sql);
