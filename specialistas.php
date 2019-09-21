@@ -63,6 +63,7 @@ try {
                         <td><input type="hidden" name="name" value="<?php echo $value1; ?>"><?php echo $value1; ?><br></td>
                         <td><input type="hidden" name="regtime" value="<?php echo $value2; ?>"><?php echo $value2; ?><br></td>
                         <td><input type="hidden" name="specialistas" value="<?php echo $value3; ?>"><?php echo $value3; ?><br></td>
+                        <input type="hidden" name="page" value="specialistas">
                         <td><input type="submit" value="Aptarnautas"></td>
                     </form>
                     </tr>
