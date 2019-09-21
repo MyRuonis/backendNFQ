@@ -150,11 +150,11 @@ class dbpatient
             . 'AND specialistas=:specialistas;';
         $stmt = $this->pdo->prepare($sql);
         
-        $stmt->bindValue(':name', $name);
-        $stmt->bindValue(':regTime', $regTime);
-        $stmt->bindValue(':specialistas', $specialistas);
+        //$stmt->bindParam(':name', $name);
+        //$stmt->bindParam(':regTime', $regTime);
+        //$stmt->bindParam(':specialistas', $specialistas);
         
-        $stmt->execute();
+        $stmt->execute(array(":name" => $name, ":regtime" => $regtime, ":specialistas" => $specialistas));
     }
 }
 ?>
