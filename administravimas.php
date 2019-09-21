@@ -3,28 +3,6 @@ require 'vendor/autoload.php';
  
 use namesql\Connection as Connection;
 use namesql\dbdoc as dbdoc;
-
-$name = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["vardas"])) {
-      $nameErr = "Name is required";
-    } else {
-      $name = test_input($_POST["vardas"]);
-      if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-        $nameErr = "Only letters and white space allowed";
-      } else {
-          header("Location: sukurtiKlienta.php");
-      }
-    }
-}
-
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
  
 try {
     $pdo = Connection::get()->connect();
@@ -69,7 +47,7 @@ try {
     </div>
 </nav>
 
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+<form method="post" action="sukurtiKlienta.php">
   Vardas: <input type="text" name="vardas"><br>
   Daktaras: <select name='specialistas' form="forma">
             <?php foreach($stocks as $stock) :
