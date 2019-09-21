@@ -133,7 +133,8 @@ class dbpatient
             }
         }
 
-        $time = $time * $klientuKiekis - $time2;
+        if($klientuKiekis == 0) $time = $time - $time2;
+        else $time = $time * $klientuKiekis - $time2;
 
         return date("H:i:s", $time);
     }
