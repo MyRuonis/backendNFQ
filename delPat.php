@@ -14,8 +14,10 @@ try {
     $stockDB = new dbpatient($pdo);
     $stockDB->delete($name, $time, $specialistas);
 
-    if($_GET['page'] == 'specialistas') header('Location: specialistas.php');
-    else header('Location: index.php');
+
+    echo $name . $time . $specialistas;
+    //if($_GET['page'] == 'specialistas') header('Location: specialistas.php');
+    //else header('Location: index.php');
 } catch (\PDOException $e) {
     echo $e->getMessage();
 }
