@@ -47,7 +47,7 @@ try {
     </div>
 </nav>
 
-<form method="post" action="sukurtiKlienta.php">
+<form action="sukurtiKlienta.php" method="post" id="forma">
   Vardas: <input type="text" name="vardas"><br>
   Daktaras: <select name="specialistas" form="forma">
             <?php foreach($stocks as $stock) :
