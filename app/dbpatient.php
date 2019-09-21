@@ -140,7 +140,7 @@ class dbpatient
     }
 
     public function pavelinti($name, $regTime, $specialistas){
-        $sql = 'SELECT id, name, regtime FROM patients WHERE regtime >= :regtime specialistas = :specialistas AND aptarnautas = false;';
+        $sql = 'SELECT id, name, regtime FROM patients WHERE regtime >= :regtime AND specialistas = :specialistas AND aptarnautas = false;';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':regtime', $regTime);
         $stmt->bindValue(':specialistas', $specialistas);
