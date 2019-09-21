@@ -146,21 +146,20 @@ class dbpatient
         $stmt->bindValue(':specialistas', $specialistas);
 
         $smtToSwap = false;
-        $help = false;
         $helpid1 = $helpid2 = 0;
 
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            if($regTime == $row['regtime']) $helpid1 = $row['id'];
             $smtToSwap = true;
 
-            if($regTime < $row['regtime']) 
+            if($regTime == $row['regtime']){ $helpid1 = $row['id']; }
+            elseif($regTime < $row['regtime']) 
             {
                 $helpid2 = $row['id'];
                 break;
             }
         }
-        echo "BYE<br>";
-        if(!$smtToSwap) return;
+
+        if(!$smtToSwap): return;
 
         echo $helpid1 . " " . $helpid2 . "<br>";
 
