@@ -3,18 +3,8 @@ require 'vendor/autoload.php';
  
 use namesql\Connection as Connection;
 use namesql\dbdoc as dbdoc;
- 
-try {
-    $pdo = Connection::get()->connect();
 
-    $stockDB = new dbdoc($pdo);
-
-    $stocks = $stockDB->all();
-} catch (\PDOException $e) {
-    echo $e->getMessage();
-}
-
-$vardas = $specialistas = "";
+$vardas = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["name"])) {
@@ -34,6 +24,16 @@ function test_input($data) {
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
+}
+ 
+try {
+    $pdo = Connection::get()->connect();
+
+    $stockDB = new dbdoc($pdo);
+
+    $stocks = $stockDB->all();
+} catch (\PDOException $e) {
+    echo $e->getMessage();
 }
 
 ?>
