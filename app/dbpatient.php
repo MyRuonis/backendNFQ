@@ -171,6 +171,7 @@ class dbpatient
                 . 'WHERE id = :id;');
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $helpid1);
+        $stmt->execute();
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $duomenys1 = array($row['name'],$row['regtime'],$row['endtime'],$row['aptarnautas'],$row['specialistas']);
         }
