@@ -104,6 +104,9 @@ class dbpatient
             }
         }
 
+        $aptarnaujamasKlientas = true;
+        $time2 = 0;
+
         $stmt = $this->pdo->query('SELECT name, specialistas, regtime '
                 . 'FROM patients '
                 . 'WHERE aptarnautas = false;');
@@ -112,10 +115,22 @@ class dbpatient
             if($row['specialistas'] == $specialistas && strtotime($row['regtime']) < strtotime($regTime))
             {
                 $klientuKiekis += 1;
+                if ($aptarnaujamasKlientas)
+                {
+                    $ptarnaujamasKlientas= false;
+
+                    $time2 =  strtotime(date("H:i:s")) - strtotime($row['regtime']);
+        
+                    $hours = floor($time2 / 3600);
+                    $mins = floor($time2 / 60 % 60);
+                    $secs = floor($time2 % 60);
+
+                    $time2 = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
+                }
             }
         }
 
-        $time = $time * $klientuKiekis;
+        $time = $time * $klientuKiekis - $time2;
 
         return date("H:i:s", $time);
     }
