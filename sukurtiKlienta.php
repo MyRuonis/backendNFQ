@@ -7,16 +7,12 @@ use namesql\dbpatient as dbpatient;
 
 $boolean = true;
 
-$name = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["vardas"])) {
+if (empty($_POST["vardas"]) || empty($_POST["specialistas"])) {
+    $boolean = false;
+} else {
+    $name = test_input($_POST["vardas"]);
+    if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
         $boolean = false;
-    } else {
-      $name = test_input($_POST["vardas"]);
-      if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-        $boolean = false;
-      }
     }
 }
 
