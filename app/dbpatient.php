@@ -32,7 +32,12 @@ class dbpatient
         $stmt->execute();
 
         $time =  strtotime($time2) - strtotime($time);
-        $time = date("H:i:s", $time);
+        
+        $hours = floor($time / 3600);
+        $mins = floor($time / 60 % 60);
+        $secs = floor($time % 60);
+
+        $time = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
         echo "<br>" . $time;
 
         $sql = 'UPDATE docs '
