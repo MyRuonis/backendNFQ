@@ -15,6 +15,8 @@ class dbpatient
 
         $time2 = date("H:i:s");
 
+        date_default_timezone_set('Europe/London');
+
         $sql = 'UPDATE patients '
             . 'SET endtime = :time, '
             . 'aptarnautas = true '
