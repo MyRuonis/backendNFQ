@@ -119,7 +119,10 @@ class dbpatient
                 {
                     $ptarnaujamasKlientas = false;
 
-                    $time2 = strtotime(date("H:i:s")) - strtotime($row['regtime']);
+                    date_default_timezone_set('Europe/Vilnius');
+                    $timenow = date("H:i:s");
+                    date_default_timezone_set('Europe/London');
+                    $time2 = strtotime($timenow) - strtotime($row['regtime']);
 
                     echo date("H:i:s") . " - " . $row['regtime'] . " = " . $time2 . "<br>";
         
