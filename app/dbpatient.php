@@ -180,14 +180,12 @@ class dbpatient
             $duomenys2 = array($row['name'],$row['regtime'],$row['endtime'],$row['aptarnautas'],$row['specialistas']);
         }
 
-        echo "1<br>";
-
         $sql = 'UPDATE patients '
         . 'SET name = :name, '
         . 'regtime = :regtime, '
         . 'endtime = :endtime, '
         . 'aptarnautas = :aptarnautas, '
-        . 'specialistas = :specialistas, '
+        . 'specialistas = :specialistas '
         . 'WHERE id = :id;';
 
         $stmt = $this->pdo->prepare($sql);
@@ -208,7 +206,7 @@ class dbpatient
         . 'regtime = :regtime, '
         . 'endtime = :endtime, '
         . 'aptarnautas = :aptarnautas, '
-        . 'specialistas = :specialistas, '
+        . 'specialistas = :specialistas '
         . 'WHERE id = :id;';
 
         $stmt = $this->pdo->prepare($sql);
