@@ -106,10 +106,6 @@ class dbpatient
             }
         }
 
-        echo date("H:i:s", $time) . "<br>" . $klientuKiekis . "<br>";
-
-        $time = $time * $klientuKiekis;
-
         return date("H:i:s", $time);
     }
 }
