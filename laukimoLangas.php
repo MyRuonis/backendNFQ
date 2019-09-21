@@ -63,7 +63,7 @@ try {
                 <td><?php echo $stockDB->kiekLaukti($_GET['vard'], $_GET['regtime'], $_GET['spec']);?></td>
                 <td><?php echo $_GET['spec']; ?></td>
                 <td><?php echo "<a href='/atsaukti.php?name=" . htmlspecialchars($_GET['vard']) . "&regtime=" . htmlspecialchars($_GET['regtime']) . "&specialistas=" . htmlspecialchars($_GET['spec']) . "' class='btn btn-dark'>Atšaukti</a>"; ?></td>
-                <td></td>
+                <td><?php echo "<a href='/pavelinti.php?name=" . htmlspecialchars($_GET['vard']) . "&regtime=" . htmlspecialchars($_GET['regtime']) . "&specialistas=" . htmlspecialchars($_GET['spec']) . "' class='btn btn-dark'>Pavėlinti</a>"; ?></td>
             </tr>
         </tbody>
     </table>
