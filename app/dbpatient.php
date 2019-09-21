@@ -149,7 +149,7 @@ class dbpatient
         $helpid1 = $helpid2 = 0;
 
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            if($regTime == $row['regtime']) $helpid1 = $row[id];
+            if($regTime == $row['regtime']) $helpid1 = $row['id'];
             $smtToSwap = true;
             $helpid = $row['id'];
 
