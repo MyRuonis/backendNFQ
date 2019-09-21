@@ -166,11 +166,9 @@ class dbpatient
 
         $duomenys1 = $duomenys2 = 0;
 
-        echo $helpid1 . " " . $helpid2 . "<br>";
-
         $stmt = $this->pdo->query('SELECT * '
                 . 'FROM patients '
-                . 'WHERE id = :id');
+                . 'WHERE id = :id;');
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $helpid1);
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
@@ -180,7 +178,7 @@ class dbpatient
         echo "1<br>";
         $stmt = $this->pdo->query('SELECT * '
                 . 'FROM patients '
-                . 'WHERE id = :id');
+                . 'WHERE id = :id;');
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $helpid2);
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
