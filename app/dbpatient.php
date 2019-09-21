@@ -140,18 +140,85 @@ class dbpatient
     }
 
     public function pavelinti($name, $regTime, $specialistas){
-        $sql = 'SELECT name, regtime FROM patients WHERE regtime > :regtime; AND specialistas = :specialistas AND aptarnautas = false;';
+        $sql = 'SELECT id, name, regtime FROM patients WHERE regtime >= :regtime; AND specialistas = :specialistas AND aptarnautas = false;';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':regtime', $regTime);
         $stmt->bindValue(':specialistas', $specialistas);
 
         $smtToSwap = false;
+        $helpid1 = $helpid2 = 0;
 
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            if($regTime == $row['regtime']) $helpid1 = $row[id];
             $smtToSwap = true;
+            $helpid = $row['id'];
+
+            if($regTime < $row['regtime']) 
+            {
+                $helpid2 = $row['id'];
+                break;
+            }
         }
 
         if(!$smtToSwap) return;
+
+        $duomenys1 = $duomenys2 = 0;
+
+        $stmt = $this->pdo->query('SELECT * '
+                . 'FROM patients '
+                . 'WHERE id = :id');
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $helpid1);
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $duomenys1 = array($row['name'],$row['regtime'],$row['endtime'],$row['aptarnautas'],$row['specialistas']);
+        }
+
+        $stmt = $this->pdo->query('SELECT * '
+                . 'FROM patients '
+                . 'WHERE id = :id');
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $helpid2);
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $duomenys2 = array($row['name'],$row['regtime'],$row['endtime'],$row['aptarnautas'],$row['specialistas']);
+        }
+
+        $sql = 'UPDATE patients '
+        . 'SET name = :name, '
+        . 'regtime = :regtime '
+        . 'endtime = :endtime '
+        . 'aptarnautas = :aptarnautas '
+        . 'specialistas = :specialistas '
+        . 'WHERE id = :id;';
+
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->bindValue(':name', $duomenys1[0]);
+        $stmt->bindValue(':regtime', $duomenys1[1]);
+        $stmt->bindValue(':endtime', $duomenys1[2]);
+        $stmt->bindValue(':aptarnautas', $duomenys1[3]);
+        $stmt->bindValue(':specialistas', $duomenys1[4]);
+        $stmt->bindValue(':id', $helpid2);
+
+        $stmt->execute();
+
+        $sql = 'UPDATE patients '
+        . 'SET name = :name, '
+        . 'regtime = :regtime '
+        . 'endtime = :endtime '
+        . 'aptarnautas = :aptarnautas '
+        . 'specialistas = :specialistas '
+        . 'WHERE id = :id;';
+
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->bindValue(':name', $duomenys2[0]);
+        $stmt->bindValue(':regtime', $duomenys2[1]);
+        $stmt->bindValue(':endtime', $duomenys2[2]);
+        $stmt->bindValue(':aptarnautas', $duomenys2[3]);
+        $stmt->bindValue(':specialistas', $duomenys2[4]);
+        $stmt->bindValue(':id', $helpid1);
+
+        $stmt->execute();
     }
 
     public function atsaukti($name, $regTime, $specialistas){
