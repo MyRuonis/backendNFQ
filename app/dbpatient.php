@@ -140,18 +140,18 @@ class dbpatient
     }
 
     public function pavelinti($name, $regTime, $specialistas){
-        $sql = 'SELECT id, name, regtime FROM patients WHERE regtime >= :regtime; AND specialistas = :specialistas AND aptarnautas = false;';
+        $sql = 'SELECT id, name, regtime FROM patients WHERE regtime >= :regtime AND specialistas = :specialistas AND aptarnautas = false;';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':regtime', $regTime);
         $stmt->bindValue(':specialistas', $specialistas);
 
         $smtToSwap = false;
+        $help = false;
         $helpid1 = $helpid2 = 0;
 
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             if($regTime == $row['regtime']) $helpid1 = $row['id'];
             $smtToSwap = true;
-            $helpid = $row['id'];
 
             if($regTime < $row['regtime']) 
             {
