@@ -51,8 +51,8 @@ try {
         <thead>
             <tr>
                 <th>Name</th>
-                    <th>Time Registered</th>
-                   <th>Specialistas</th>
+                <th>Time Registered</th>
+                <th>Specialistas</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -63,11 +63,10 @@ try {
                         <td><input type="hidden" name="regtime" value="<?php echo $value2; ?>"><?php echo $value2; ?><br></td>
                         <td><input type="hidden" name="specialistas" value="<?php echo $value3; ?>"><?php echo $value3; ?><br></td>
                         <input type="hidden" name="page" value="specialistas">
-                        <?php echo "<form action='/atsaukti.php?name=" . $value1 . "&regtime=" . $value2 . "&specialistas=" . $value3 . "' method='get'><input type='submit' value='Atsaukti'></form>"; ?>
                         <td><input type="submit" value="Aptarnautas"></td>
                     </tr>
                 <?php endforeach; ?>
-                </tbody>
+            </tbody>
     </table>
 </div>
 </body>

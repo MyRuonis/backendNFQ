@@ -58,10 +58,11 @@ try {
         </thead>
         <tbody>
             <tr>
+                <form>
                 <td><?php echo $_GET['vard']; ?></td>
                 <td><?php echo $stockDB->kiekLaukti($_GET['vard'], $_GET['regtime'], $_GET['spec']);?></td>
                 <td><?php echo $_GET['spec']; ?></td>
-                <td></td>
+                <td><?php echo "<form action='/atsaukti.php?name=" . $value1 . "&regtime=" . $value2 . "&specialistas=" . $value3 . "' method='get'><input type='submit' value='Atsaukti'></form>"; ?></td>
                 <td></td>
             </tr>
         </tbody>
