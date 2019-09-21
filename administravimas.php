@@ -4,13 +4,13 @@ require 'vendor/autoload.php';
 use namesql\Connection as Connection;
 use namesql\dbdoc as dbdoc;
 
-$vardas = "";
+$name = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["name"])) {
+    if (empty($_POST["vardas"])) {
       $nameErr = "Name is required";
     } else {
-      $name = test_input($_POST["name"]);
+      $name = test_input($_POST["vardas"]);
       if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
         $nameErr = "Only letters and white space allowed";
       } else {
