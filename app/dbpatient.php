@@ -159,7 +159,7 @@ class dbpatient
             }
         }
 
-        if(!$smtToSwap): return;
+        if(!$smtToSwap) { return; }
 
         echo $helpid1 . " " . $helpid2 . "<br>";
 
