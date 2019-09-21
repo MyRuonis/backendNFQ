@@ -120,6 +120,8 @@ class dbpatient
                     $ptarnaujamasKlientas= false;
 
                     $time2 =  strtotime(date("H:i:s")) - strtotime($row['regtime']);
+
+                    echo $time2 . "<br>";
         
                     $hours = floor($time2 / 3600);
                     $mins = floor($time2 / 60 % 60);
