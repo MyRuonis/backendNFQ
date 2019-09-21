@@ -166,21 +166,21 @@ class dbpatient
 
         $duomenys1 = $duomenys2 = 0;
 
-        $stmt2 = $this->pdo->query('SELECT * FROM patients WHERE id=:id;');
+        $sql = 'SELECT * FROM patients WHERE id=:id;';
         echo "afterQ<br>";
-        $stmt2 = $this->pdo->prepare($sql);
-        $stmt2->bindValue(':id', $helpid1);
-        while ($row = $stmt2->fetch(\PDO::FETCH_ASSOC)) {
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $helpid1);
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $duomenys1 = array($row['name'],$row['regtime'],$row['endtime'],$row['aptarnautas'],$row['specialistas']);
         }
 
         echo "1<br>";
-        $stmt3 = $this->pdo->query('SELECT * '
+        $stmt = $this->pdo->query('SELECT * '
                 . 'FROM patients '
                 . 'WHERE id = :id;');
-        $stmt3 = $this->pdo->prepare($sql);
-        $stmt3->bindValue(':id', $helpid2);
-        while ($row = $stmt3->fetch(\PDO::FETCH_ASSOC)) {
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $helpid2);
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $duomenys2 = array($row['name'],$row['regtime'],$row['endtime'],$row['aptarnautas'],$row['specialistas']);
         }
 
