@@ -117,11 +117,11 @@ class dbpatient
                 $klientuKiekis += 1;
                 if ($aptarnaujamasKlientas)
                 {
-                    $ptarnaujamasKlientas= false;
+                    $ptarnaujamasKlientas = false;
 
-                    $time2 =  strtotime(date("H:i:s")) - strtotime($row['regtime']);
+                    $time2 = strtotime(date("H:i:s")) - strtotime($row['regtime']);
 
-                    echo $time2 . "<br>";
+                    echo date("H:i:s") . " - " . $row['regtime'] . " = " . $time2 . "<br>";
         
                     $hours = floor($time2 / 3600);
                     $mins = floor($time2 / 60 % 60);
