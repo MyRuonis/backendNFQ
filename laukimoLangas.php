@@ -9,6 +9,14 @@ try {
 
     $stockDB = new dbpatient($pdo);
 
+    $laukimoLaikas = $stockDB->kiekLaukti($_GET['vard'], $_GET['regtime'], $_GET['spec']);
+
+    while(true)
+    {
+        sleep(5);
+        $stockDB->kiekLaukti($_GET['vard'], $_GET['regtime'], $_GET['spec']);
+    }
+
 } catch (\PDOException $e) {
     //echo $e->getMessage();
     echo "Klaida";
@@ -63,4 +71,6 @@ try {
         </tbody>
     </table>
 </div>
+
+<meta http-equiv="refresh" content="5"/>
 </body>
