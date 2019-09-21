@@ -49,7 +49,7 @@ try {
 
 <form method="post" action="sukurtiKlienta.php">
   Vardas: <input type="text" name="vardas"><br>
-  Daktaras: <select name='specialistas' form="forma">
+  Daktaras: <select name="specialistas" form="forma">
             <?php foreach($stocks as $stock) :
                   $value=htmlspecialchars($stock['name']);
                   echo "<option value=". $value . ">" . $value . "</option>";
