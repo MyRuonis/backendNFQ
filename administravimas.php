@@ -13,6 +13,24 @@ try {
 } catch (\PDOException $e) {
     echo $e->getMessage();
 }
+
+$vardas = $specialistas = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["vardas"])) {
+    $nameErr = "Vardas yra būtinas.";
+  } else {
+    $name = test_input($_POST["name"]);
+  }
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
 ?>
 
 <head>
@@ -46,7 +64,7 @@ try {
     </div>
 </nav>
 
-<form action="/sukurtiKlienta.php" method="post" id="forma">
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   Vardas: <input type="text" name="vardas"><br>
   Daktaras: <select name='specialistas' form="forma">
             <?php foreach($stocks as $stock) :
@@ -54,8 +72,7 @@ try {
                   echo "<option value=". $value . ">" . $value . "</option>";
               endforeach;
             ?>
-          </select> 
-
+    </select>
   <br>
   <input type="submit" value="Submit">
 </form>
