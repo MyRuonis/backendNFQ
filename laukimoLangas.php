@@ -52,6 +52,8 @@ try {
                 <th>Vardas</th>
                 <th>~Laukti</th>
                 <th>Specialistas</th>
+                <th>Atšaukimas</th>
+                <th>Pavėlinimas</th>
             </tr>
         </thead>
         <tbody>
@@ -59,6 +61,7 @@ try {
                 <td><?php echo $_GET['vard']; ?></td>
                 <td><?php echo $stockDB->kiekLaukti($_GET['vard'], $_GET['regtime'], $_GET['spec']);?></td>
                 <td><?php echo $_GET['spec']; ?></td>
+                <td><?php echo "<form action='delPat.php/?name=" . $_GET['vard'] . "&regtime=" . $_GET['regtime'] . "&specialistas=" . $_GET['spec'] . "' method=get><input type='submit' value='Atšaukti' /></form>"?></td>
             </tr>
         </tbody>
     </table>
