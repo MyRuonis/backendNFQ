@@ -103,7 +103,6 @@ class dbpatient
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             if($row['specialistas'] == $specialistas && strtotime($row['regtime']) < strtotime($regTime))
             {
-                echo $specialistas . "<br>" . $row['regtime'] . "<br>" . $regTime . "<br>";
                 $klientuKiekis += 1;
             }
         }
