@@ -58,14 +58,13 @@ try {
                 <tbody>
                 <?php foreach ($stocks as $stock) : ?>
                     <tr>
-                    <form action="/delPat.php" method="get">
                         <?php $value1=htmlspecialchars($stock['name']); $value2=htmlspecialchars($stock['regtime']); $value3=htmlspecialchars($stock['specialistas']);?>
                         <td><input type="hidden" name="name" value="<?php echo $value1; ?>"><?php echo $value1; ?><br></td>
                         <td><input type="hidden" name="regtime" value="<?php echo $value2; ?>"><?php echo $value2; ?><br></td>
                         <td><input type="hidden" name="specialistas" value="<?php echo $value3; ?>"><?php echo $value3; ?><br></td>
                         <input type="hidden" name="page" value="specialistas">
+                        <?php echo "<form action='/atsaukti.php?name=" . $value1 . "&regtime=" . $value2 . "&specialistas=" . $value3 . "' method='get'><input type='submit' value='Atsaukti'></form>"; ?>
                         <td><input type="submit" value="Aptarnautas"></td>
-                    </form>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

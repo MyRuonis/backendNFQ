@@ -138,5 +138,23 @@ class dbpatient
 
         return date("H:i:s", $time);
     }
+
+    public function pavelinti($name, $regTime, $specialistas){
+
+    }
+
+    public function atsaukti($name, $regTime, $specialistas){
+        $sql = 'DELETE FROM patients'
+            . 'WHERE name=:name'
+            . 'AND regtime=:regtime'
+            . 'AND specialistas=:specialistas;';
+        $stmt = $this->pdo->prepare($sql);
+        
+        $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':regTime', $regTime);
+        $stmt->bindValue(':specialistas', $specialistas);
+        
+        $stmt->execute();
+    }
 }
 ?>
