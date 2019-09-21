@@ -119,7 +119,7 @@ class dbpatient
                 {
                     $ptarnaujamasKlientas= false;
 
-                    $time2 =  date("H:i:s") - strtotime($row['regtime']);
+                    $time2 =  strtotime(date("H:i:s")) - strtotime($row['regtime']);
 
                     echo $time2 . "<br>";
         
@@ -128,6 +128,8 @@ class dbpatient
                     $secs = floor($time2 % 60);
 
                     $time2 = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
+
+                    echo $time2 . "<br>";
                 }
             }
         }
