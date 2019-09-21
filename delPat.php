@@ -10,9 +10,8 @@ try {
     $time = $_GET['regtime'];
     $specialistas = $_GET['specialistas'];
 
-    echo "1";
-    $pdo = Connection::get()->connect();echo "2";
-    $stockDB = new dbpatient($pdo);echo "3";
+    $pdo = Connection::get()->connect();
+    $stockDB = new dbpatient($pdo);
     $stockDB->delete($name, $time, $specialistas);
 
     //header('Location: specialistas.php');
