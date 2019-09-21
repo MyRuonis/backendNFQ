@@ -31,8 +31,8 @@ class dbpatient
  
         $stmt->execute();
 
-        echo strtotime($time2) - strtotime($time);
-        $time = gmdate("H:i:s", strtotime($time) - strtotime($time2));
+        $time =  strtotime($time2) - strtotime($time);
+        $time = date("H:i:s", $time);
         echo "<br>" . $time;
 
         $sql = 'UPDATE docs '
