@@ -171,6 +171,7 @@ class dbpatient
         $stmt->bindValue(':id', $helpid1);
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $duomenys1 = array($row['name'],$row['regtime'],$row['endtime'],$row['aptarnautas'],$row['specialistas']);
+            echo $duomenys1[0] . "<br>";
         }
 
         $sql ='SELECT * FROM patients WHERE id = :id;';
@@ -178,6 +179,7 @@ class dbpatient
         $stmt->bindValue(':id', $helpid2);
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $duomenys2 = array($row['name'],$row['regtime'],$row['endtime'],$row['aptarnautas'],$row['specialistas']);
+            echo $duomenys2[0] . "<br>";
         }
 
         $sql = 'UPDATE patients '
