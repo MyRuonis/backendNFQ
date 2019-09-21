@@ -17,11 +17,16 @@ try {
 $vardas = $specialistas = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (empty($_POST["vardas"])) {
-    $nameErr = "Vardas yra būtinas.";
-  } else {
-    $name = test_input($_POST["name"]);
-  }
+    if (empty($_POST["name"])) {
+      $nameErr = "Name is required";
+    } else {
+      $name = test_input($_POST["name"]);
+      if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+        $nameErr = "Only letters and white space allowed";
+      } else {
+          header("Location: sukurtiKlienta.php");
+      }
+    }
 }
 
 function test_input($data) {
