@@ -150,7 +150,6 @@ class dbpatient
         $helpid1 = $helpid2 = 0;
 
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            echo "WHILE<br>";
             $smtToSwap = true;
 
             if($regTime == $row['regtime']){ $helpid1 = $row['id']; }
@@ -161,13 +160,13 @@ class dbpatient
             }
         }
 
-        echo "HELP<br>";
-
         if(!$smtToSwap) { return; }
 
-        echo $helpid1 . " " . $helpid2 . "<br>";
+        //WORKS TILL HERE
 
         $duomenys1 = $duomenys2 = 0;
+
+        echo "1<br>";
 
         $stmt = $this->pdo->query('SELECT * '
                 . 'FROM patients '
@@ -178,6 +177,7 @@ class dbpatient
             $duomenys1 = array($row['name'],$row['regtime'],$row['endtime'],$row['aptarnautas'],$row['specialistas']);
         }
 
+        echo "1<br>";
         $stmt = $this->pdo->query('SELECT * '
                 . 'FROM patients '
                 . 'WHERE id = :id');
@@ -186,6 +186,8 @@ class dbpatient
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $duomenys2 = array($row['name'],$row['regtime'],$row['endtime'],$row['aptarnautas'],$row['specialistas']);
         }
+
+        echo "1<br>";
 
         $sql = 'UPDATE patients '
         . 'SET name = :name, '
@@ -205,6 +207,8 @@ class dbpatient
         $stmt->bindValue(':id', $helpid2);
 
         $stmt->execute();
+
+        echo "1<br>";
 
         $sql = 'UPDATE patients '
         . 'SET name = :name, '
