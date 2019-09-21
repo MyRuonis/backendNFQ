@@ -79,8 +79,6 @@ class dbpatient
     }
 
     public function kiekLaukti($name, $regTime, $specialistas){
-        date_default_timezone_set('Europe/Vilnius');
-
         $stmt = $this->pdo->query('SELECT name, bendrasSugaistasLaikas, aptarnautiKlientai '
                 . 'FROM docs;');
         $time = date("H:i:s");
