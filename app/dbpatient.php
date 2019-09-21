@@ -144,9 +144,9 @@ class dbpatient
     }
 
     public function atsaukti($name, $regTime, $specialistas){
-        $sql = 'DELETE FROM patients'
-            . 'WHERE name=:name'
-            . 'AND regtime=:regtime'
+        $sql = 'DELETE FROM patients '
+            . 'WHERE name=:name '
+            . 'AND regtime=:regtime '
             . 'AND specialistas=:specialistas;';
         $stmt = $this->pdo->prepare($sql);
         
