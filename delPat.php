@@ -15,7 +15,7 @@ try {
     $stockDB = new dbpatient($pdo);echo "3";
     $stockDB->delete($name, $time, $specialistas);
 
-    header('Location: specialistas.php');
+    //header('Location: specialistas.php');
 } catch (\PDOException $e) {
     echo $e->getMessage();
 }
