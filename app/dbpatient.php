@@ -166,11 +166,14 @@ class dbpatient
 
         $duomenys1 = $duomenys2 = 0;
 
-        $stmt = $this->pdo->query('SELECT name, regtime, endtime, aptarnautas, specialistas '
+        $stmt = $this->pdo->query('SELECT * '
                 . 'FROM patients '
                 . 'WHERE id = :id;');
+        echo "0";
         $stmt = $this->pdo->prepare($sql);
+        echo "0";
         $stmt->bindValue(':id', $helpid1);
+        echo "0";
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $duomenys1 = array($row['name'],$row['regtime'],$row['endtime'],$row['aptarnautas'],$row['specialistas']);
         }
