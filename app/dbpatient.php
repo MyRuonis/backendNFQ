@@ -81,7 +81,8 @@ class dbpatient
     public function kiekLaukti($name, $regTime, $specialistas){
         $stmt = $this->pdo->query('SELECT name, bendrasSugaistasLaikas, aptarnautiKlientai '
                 . 'FROM docs;');
-        $time = date("H:i:s");
+
+        $time = 0;
 
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             if($row['name'] == $specialistas)
@@ -100,7 +101,7 @@ class dbpatient
                 . 'WHERE aptarnautas = false;');
         $klientuKiekis = 0;
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            if($row['specialistas'] == $specialistas && $row['regTime'] < $regTime && $row['name'] != $name)
+            if($row['specialistas'] == $specialistas && strtotime($row['regTime']) < strtotime($regTime))
             {
                 $klientuKiekis += 1;
             }
