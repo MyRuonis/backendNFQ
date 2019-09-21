@@ -124,6 +124,11 @@ class dbpatient
                     date_default_timezone_set('Europe/London');
 
                     $time2 = strtotime($timenow) - strtotime($row['regtime']);
+
+                    if($time2 > $time)
+                    {
+                        $time2 = $time;
+                    }
                 }
             }
         }
