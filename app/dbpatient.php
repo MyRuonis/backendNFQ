@@ -162,6 +162,8 @@ class dbpatient
 
         if(!$smtToSwap) return;
 
+        echo $helpid1 . " " . $helpid2 . "<br>";
+
         $duomenys1 = $duomenys2 = 0;
 
         $stmt = $this->pdo->query('SELECT * '
