@@ -119,7 +119,7 @@ class dbpatient
                 {
                     $ptarnaujamasKlientas= false;
 
-                    $time2 =  strtotime(date("H:i:s")) - strtotime($row['regtime']);
+                    $time2 =  date("H:i:s") - strtotime($row['regtime']);
 
                     echo $time2 . "<br>";
         
