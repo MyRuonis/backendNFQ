@@ -14,8 +14,6 @@ try {
     $stockDB = new dbpatient($pdo);
     $newTime = $stockDB->pavelinti($name, $time, $specialistas);
 
-    echo "<br>" . $newTime . "<br>";
-
     //header('Location: laukimoLangas.php?vard=' . $name . '&regtime=' . $newTime . '&spec=' . $specialistas);
 } catch (\PDOException $e) {
     echo $e->getMessage();
