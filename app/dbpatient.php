@@ -133,5 +133,4 @@ class dbpatient
         return date("H:i:s", $time);
     }
 }
-
 ?>
