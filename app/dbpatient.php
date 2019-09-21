@@ -184,7 +184,6 @@ class dbpatient
         . 'SET name = :name, '
         . 'regtime = :regtime, '
         . 'endtime = :endtime, '
-        . 'aptarnautas = :aptarnautas, '
         . 'specialistas = :specialistas '
         . 'WHERE id = :id;';
 
@@ -193,19 +192,15 @@ class dbpatient
         $stmt->bindValue(':name', $duomenys1[0]);
         $stmt->bindValue(':regtime', $duomenys1[1]);
         $stmt->bindValue(':endtime', $duomenys1[2]);
-        $stmt->bindValue(':aptarnautas', $duomenys1[3]);
         $stmt->bindValue(':specialistas', $duomenys1[4]);
         $stmt->bindValue(':id', $helpid2);
 
         $stmt->execute();
 
-        echo "1<br>";
-
         $sql = 'UPDATE patients '
         . 'SET name = :name, '
         . 'regtime = :regtime, '
         . 'endtime = :endtime, '
-        . 'aptarnautas = :aptarnautas, '
         . 'specialistas = :specialistas '
         . 'WHERE id = :id;';
 
@@ -214,7 +209,6 @@ class dbpatient
         $stmt->bindValue(':name', $duomenys2[0]);
         $stmt->bindValue(':regtime', $duomenys2[1]);
         $stmt->bindValue(':endtime', $duomenys2[2]);
-        $stmt->bindValue(':aptarnautas', $duomenys2[3]);
         $stmt->bindValue(':specialistas', $duomenys2[4]);
         $stmt->bindValue(':id', $helpid1);
 
