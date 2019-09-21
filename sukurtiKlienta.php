@@ -18,10 +18,12 @@ try {
     $insertDemo->insertLine($vard, $specialistas);
 
     echo "Užregistruota sėkmingai.<br>";
-    echo "<a href='svieslente.php'>Svieslentė</a>";
+    date_default_timezone_set('Europe/Vilnius');
+    echo "<a href='laukimoLangas.php?vard='" . $vard . "&regtime=" . date("H:i:s") . "&spec=" . $specialistas . ">Laukimo langas</a>";
+    date_default_timezone_set('Europe/London');
 
 
 } catch (\PDOException $e) {
-    echo $e->getMessage();
+    //echo $e->getMessage();
     echo "Įvyko klaida, kreipkitės telefonu";
 }
