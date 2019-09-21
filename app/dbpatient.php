@@ -219,6 +219,8 @@ class dbpatient
         $stmt->bindValue(':id', $helpid1);
 
         $stmt->execute();
+
+        return $duomenys2[1];
     }
 
     public function atsaukti($name, $regTime, $specialistas){
