@@ -38,7 +38,6 @@ class dbpatient
         $secs = floor($time % 60);
 
         $time = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
-        echo "<br>" . $time;
 
         $sql = 'UPDATE docs '
         . 'SET aptarnautiklientai = aptarnautiklientai + 1, '
