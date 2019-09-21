@@ -166,7 +166,7 @@ class dbpatient
 
         $duomenys1 = $duomenys2 = 0;
 
-        echo "1<br>";
+        echo $helpid1 . " " . $helpid2 . "<br>";
 
         $stmt = $this->pdo->query('SELECT * '
                 . 'FROM patients '
