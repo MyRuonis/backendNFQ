@@ -19,7 +19,7 @@ try {
 
     echo "Užregistruota sėkmingai.<br>";
     date_default_timezone_set('Europe/Vilnius');
-    echo "<a href='laukimoLangas.php?vard='" . $vard . "&regtime=" . date("H:i:s") . "&spec=" . $specialistas . ">Laukimo langas</a>";
+    echo "<a href='laukimoLangas.php?vard=" . $vard . "&regtime=" . date("H:i:s") . "&spec=" . $specialistas . "'>Laukimo langas</a>";
     date_default_timezone_set('Europe/London');
 
 
