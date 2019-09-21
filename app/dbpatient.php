@@ -122,17 +122,8 @@ class dbpatient
                     date_default_timezone_set('Europe/Vilnius');
                     $timenow = date("H:i:s");
                     date_default_timezone_set('Europe/London');
+
                     $time2 = strtotime($timenow) - strtotime($row['regtime']);
-
-                    echo date("H:i:s") . " - " . $row['regtime'] . " = " . $time2 . "<br>";
-        
-                    $hours = floor($time2 / 3600);
-                    $mins = floor($time2 / 60 % 60);
-                    $secs = floor($time2 % 60);
-
-                    $time2 = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
-
-                    echo $time2 . "<br>";
                 }
             }
         }
