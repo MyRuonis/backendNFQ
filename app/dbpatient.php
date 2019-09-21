@@ -140,7 +140,18 @@ class dbpatient
     }
 
     public function pavelinti($name, $regTime, $specialistas){
+        $sql = 'SELECT name, regtime FROM patients WHERE regtime > :regtime; AND specialistas = :specialistas AND aptarnautas = false;';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':regtime', $regTime);
+        $stmt->bindValue(':specialistas', $specialistas);
 
+        $smtToSwap = false;
+
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $smtToSwap = true;
+        }
+
+        if(!$smtToSwap) return;
     }
 
     public function atsaukti($name, $regTime, $specialistas){
