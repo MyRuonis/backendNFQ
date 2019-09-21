@@ -148,7 +148,7 @@ class dbpatient
         $stmt = $this->pdo->prepare($sql);
         
         $stmt->bindValue(':name', $name);
-        $stmt->bindValue(':regTime', $regTime);
+        $stmt->bindValue(':regtime', $regTime);
         $stmt->bindValue(':specialistas', $specialistas);
         
         $stmt->execute();
