@@ -171,8 +171,7 @@ class dbpatient
         $stmt->bindValue(':id', $helpid1);
         $stmt->execute();
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $duomenys1 = array($row['name'],$row['regtime'],$row['endtime'],$row['aptarnautas'],$row['specialistas']);
-            echo $duomenys1[0] . "<br>";
+            $duomenys1 = $row['name'];
         }
 
         $sql ='SELECT * FROM patients WHERE id = :id;';
@@ -180,40 +179,27 @@ class dbpatient
         $stmt->bindValue(':id', $helpid2);
         $stmt->execute();
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $duomenys2 = array($row['name'],$row['regtime'],$row['endtime'],$row['aptarnautas'],$row['specialistas']);
-            echo $duomenys2[0] . "<br>";
+            $duomenys2 = $row['name'];
         }
 
         $sql = 'UPDATE patients '
-        . 'SET name = :name, '
-        . 'regtime = :regtime, '
-        . 'endtime = :endtime, '
-        . 'specialistas = :specialistas '
+        . 'SET name = :name '
         . 'WHERE id = :id;';
 
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->bindValue(':name', $duomenys1[0]);
-        $stmt->bindValue(':regtime', $duomenys1[1]);
-        $stmt->bindValue(':endtime', $duomenys1[2]);
-        $stmt->bindValue(':specialistas', $duomenys1[4]);
+        $stmt->bindValue(':name', $duomenys1);
         $stmt->bindValue(':id', $helpid2);
 
         $stmt->execute();
 
         $sql = 'UPDATE patients '
-        . 'SET name = :name, '
-        . 'regtime = :regtime, '
-        . 'endtime = :endtime, '
-        . 'specialistas = :specialistas '
+        . 'SET name = :name '
         . 'WHERE id = :id;';
 
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->bindValue(':name', $duomenys2[0]);
-        $stmt->bindValue(':regtime', $duomenys2[1]);
-        $stmt->bindValue(':endtime', $duomenys2[2]);
-        $stmt->bindValue(':specialistas', $duomenys2[4]);
+        $stmt->bindValue(':name', $duomenys2);
         $stmt->bindValue(':id', $helpid1);
 
         $stmt->execute();
