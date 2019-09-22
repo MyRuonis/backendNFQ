@@ -147,7 +147,7 @@ class dbpatient
             if($row['name'] == $specialistas)
             {
                 $str_time = $row['bendrassugaistaslaikas'];
-                $str_time = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $str_time);
+                $str_time = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $str_time); 
                 sscanf($str_time, "%d:%d:%d", $hours, $minutes, $seconds);
                 $time_seconds = $hours * 3600 + $minutes * 60 + $seconds;
 
@@ -158,9 +158,7 @@ class dbpatient
         $aptarnaujamasKlientas = true;
         $time2 = 0;
 
-        $stmt = $this->pdo->query('SELECT name, specialistas, regtime '
-                . 'FROM patients '
-                . 'WHERE aptarnautas = false;');
+        $stmt = $this->pdo->query('SELECT name, specialistas, regtime FROM patients WHERE aptarnautas = false;');
         $klientuKiekis = 0;
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             if($row['specialistas'] == $specialistas && strtotime($row['regtime']) < strtotime($regTime))

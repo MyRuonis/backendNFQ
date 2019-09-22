@@ -35,7 +35,7 @@
 <table class="table table-dark">
   <thead>
     <tr>
-      <th scope="col">Laikas Nuo - Iki</th>
+      <th scope="col">Siūloma ateiti Nuo - Iki</th>
       <th scope="col">Specialistas</th>
     </tr>
   </thead>
