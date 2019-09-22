@@ -2,7 +2,7 @@
 
 namespace namesql;
 
-class dbdoc
+class dbstats
 {
     protected $pdo = null;
 
@@ -36,6 +36,10 @@ class dbdoc
             }
 
             $galimasNuo = $stock['laikasiki'];
+        }
+
+        foreach($laikai as $laikas){
+            echo $laikas . " ";
         }
     }
 }
