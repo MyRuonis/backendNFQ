@@ -172,8 +172,6 @@ class dbpatient
         $stmt->bindValue(':specialistas', $specialistas);
         $stmt->execute();
 
-        echo "LINE<br>";
-
         $smtToSwap = false;
         $helpid1 = $helpid2 = 0;
 
@@ -193,9 +191,7 @@ class dbpatient
 
         if(!$smtToSwap) { return; }
 
-        echo "LINE<br>";
-
-        $duomenys1 = $duomenys2 = 0;
+        $duomenys1 = $duomenys2 = date("H:i:s");
 
         $sql = 'SELECT regtime FROM patients WHERE id=:id;';
         $stmt = $this->pdo->prepare($sql);
@@ -213,28 +209,26 @@ class dbpatient
             $duomenys2 = $row['regtime'];
         }
 
-        echo "LINE<br>";
-
         $sql = 'UPDATE patients '
         . 'SET regtime = :regtime '
         . 'WHERE id = :id;';
-
+        echo "HERe<br>";
         $stmt = $this->pdo->prepare($sql);
 
         $stmt->bindValue(':regtime', $duomenys1);
         $stmt->bindValue(':id', $helpid2);
-
+        echo "HERe<br>";
         $stmt->execute();
 
         $sql = 'UPDATE patients '
         . 'SET regtime = :regtime '
         . 'WHERE id = :id;';
-
+        echo "HERe<br>";
         $stmt = $this->pdo->prepare($sql);
 
         $stmt->bindValue(':regtime', $duomenys2);
         $stmt->bindValue(':id', $helpid1);
-
+        echo "HERe<br>";
         $stmt->execute();
     }
 
