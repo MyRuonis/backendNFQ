@@ -15,7 +15,7 @@ class dbpatient
 
         $time2 = date("H:i:s");
 
-        date_default_timezone_set('Europe/London');
+        //date_default_timezone_set('Europe/London');
 
         $sql = 'UPDATE patients '
             . 'SET endtime = :time, '
@@ -52,11 +52,7 @@ class dbpatient
         $stmt->execute();
     }
 
-    public function insertLine($name, $specialistas) {
-
-        date_default_timezone_set('Europe/Vilnius');
-
-        $regTime = date("H:i:s");
+    public function insertLine($name, $specialistas, $regtime) {
 
         $sql = 'INSERT INTO patients(name, regTime, endTime, aptarnautas, specialistas) VALUES (:name, :regTime, :endTime, FALSE, :specialistas);';
         $stmt = $this->pdo->prepare($sql);
@@ -121,7 +117,7 @@ class dbpatient
 
                     date_default_timezone_set('Europe/Vilnius');
                     $timenow = date("H:i:s");
-                    date_default_timezone_set('Europe/London');
+                    //date_default_timezone_set('Europe/London');
 
                     $time2 = strtotime($timenow) - strtotime($row['regtime']);
 

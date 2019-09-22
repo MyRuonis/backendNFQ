@@ -27,12 +27,14 @@ if($boolean)
         //echo 'A connection to the PostgreSQL database sever has been established successfully.';
     
         $insertDemo = new dbpatient($pdo);
+
+        date_default_timezone_set('Europe/Vilnius');
+        $time=date("H:i:s");
     
-        $insertDemo->insertLine($vard, $specialistas);
+        $insertDemo->insertLine($vard, $specialistas, $time);
     
         echo "Užregistruota sėkmingai.<br>";
-        date_default_timezone_set('Europe/Vilnius');
-        echo "<a href='laukimoLangas.php?vard=" . $vard . "&regtime=" . date("H:i:s") . "&spec=" . $specialistas . "'>Laukimo langas</a>";
+        echo "<a href='laukimoLangas.php?vard=" . $vard . "&regtime=" . $time . "&spec=" . $specialistas . "'>Laukimo langas</a>";
         //date_default_timezone_set('Europe/London');
     
     } catch (\PDOException $e) {
