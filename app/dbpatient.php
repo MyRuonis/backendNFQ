@@ -15,8 +15,6 @@ class dbpatient
 
         $time2 = date("H:i:s");
 
-        //date_default_timezone_set('Europe/London');
-
         $sql = 'INSERT INTO stats(diena, laikasnuo, laikasiki, specialistas) VALUES (:diena, :laikasnuo, :laikasiki, :specialistas);';
         $stmt = $this->pdo->prepare($sql);
         
@@ -41,12 +39,40 @@ class dbpatient
  
         $stmt->execute();
 
+        $helptime = 0; $helptime2 = "20:00:00";
+        $sql = 'SELECT bendrassugaistaslaikas WHERE name=:name;';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':name', $specialistas);
+        $stmt->execute();
+        while ($row = $stmt1->fetch(\PDO::FETCH_ASSOC)) {
+            $helptime = $row['bendrassugaistaslaikas'];
+        }
+
+        if(strtotime($helptime) > strtotime($helptime2)){
+            $helptime = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $helptime);
+            sscanf($helptime, "%d:%d:%d", $hours, $minutes, $seconds);
+            $helptime = $hours * 3600 + $minutes * 60 + $seconds;
+            $helptime = $helptime/2;
+
+            $helptime = date("H:i:s", $helptime);
+
+            $sql = 'UPDATE docs '
+            . 'SET aptarnautiklientai = aptarnautiklientai/2, '
+            . 'bendrassugaistaslaikas = :time '
+            . 'WHERE name = :name;';
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindValue(':time', $helptime);
+            $stmt->bindValue(':name', $specialistas);
+
+            $stmt->execute();
+        }
+
         $time =  strtotime($time2) - strtotime($time);
-        
         $hours = floor($time / 3600);
         $mins = floor($time / 60 % 60);
         $secs = floor($time % 60);
-
         $time = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
 
         $sql = 'UPDATE docs '
