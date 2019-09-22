@@ -43,6 +43,9 @@ try {
             <li class="nav-item active">
                 <a class="nav-link" href="specialistas.php">Specialistas<span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="statistika.php">Statistika<span class="sr-only">(current)</span></a>
+            </li>
         </ul>
     </div>
 </nav>

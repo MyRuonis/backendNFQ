@@ -38,8 +38,8 @@ class dbstats
             $galimasNuo = $stock['laikasiki'];
         }
 
-        foreach($laikai as $laikas){
-            echo $laikas . " ";
+        for($i=0;$i<sizeof($laikai);$i+=2){
+            echo $laikai[$i] . " - " . $laikai[$i+1] . "<br>";
         }
     }
 }
