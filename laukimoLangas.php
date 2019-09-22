@@ -66,8 +66,8 @@ try {
                 <td><?php echo $duom[0]; ?></td>
                 <td><?php echo $stockDB->kiekLaukti($duom[0], $duom[1], $duom[2]);?></td>
                 <td><?php echo $duom[2]; ?></td>
-                <td><?php echo "<a href='/atsaukti.php?name=" . htmlspecialchars($_GET['vard']) . "&regtime=" . htmlspecialchars($_GET['regtime']) . "&specialistas=" . htmlspecialchars($_GET['spec']) . "' class='btn btn-dark'>Atšaukti</a>"; ?></td>
-                <td><?php echo "<a href='/pavelinti.php?id=" . $id . "&name=" . htmlspecialchars($_GET['vard']) . "&regtime=" . htmlspecialchars($_GET['regtime']) . "&specialistas=" . htmlspecialchars($_GET['spec']) . "' class='btn btn-dark'>Pavėlinti</a>"; ?></td>
+                <td><?php echo "<a href='/atsaukti.php?name=" . htmlspecialchars($duom[0]) . "&regtime=" . htmlspecialchars($duom[1]) . "&specialistas=" . htmlspecialchars($duom[2]) . "' class='btn btn-dark'>Atšaukti</a>"; ?></td>
+                <td><?php echo "<a href='/pavelinti.php?id=" . $id . "&name=" . htmlspecialchars($duom[0]) . "&regtime=" . htmlspecialchars($duom[1]) . "&specialistas=" . htmlspecialchars($duom[2]) . "' class='btn btn-dark'>Pavėlinti</a>"; ?></td>
             </tr>
         </tbody>
     </table>
