@@ -47,7 +47,7 @@ class dbpatient
         while ($row = $stmt1->fetch(\PDO::FETCH_ASSOC)) {
             $helptime = $row['bendrassugaistaslaikas'];
         }
-
+        echo "HERE<br>";
         if(strtotime($helptime) > strtotime($helptime2)){
             $helptime = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $helptime);
             sscanf($helptime, "%d:%d:%d", $hours, $minutes, $seconds);
@@ -56,12 +56,14 @@ class dbpatient
 
             $helptime = date("H:i:s", $helptime);
 
+            echo "HERE<br>";
             $sql = 'UPDATE docs '
             . 'SET aptarnautiklientai = aptarnautiklientai/2, '
             . 'bendrassugaistaslaikas = :time '
             . 'WHERE name = :name;';
 
             $stmt = $this->pdo->prepare($sql);
+            echo "HERE<br>";
 
             $stmt->bindValue(':time', $helptime);
             $stmt->bindValue(':name', $specialistas);
@@ -74,7 +76,7 @@ class dbpatient
         $mins = floor($time / 60 % 60);
         $secs = floor($time % 60);
         $time = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
-
+        echo "HERE<br>";
         $sql = 'UPDATE docs '
         . 'SET aptarnautiklientai = aptarnautiklientai + 1, '
         . 'bendrassugaistaslaikas = bendrassugaistaslaikas + :time '
