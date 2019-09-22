@@ -167,11 +167,15 @@ class dbpatient
     }
 
     public function pavelinti($name, $regTime, $specialistas){
-        $sql = 'SELECT id, name, regtime FROM patients WHERE specialistas = :specialistas AND aptarnautas = false;';
+        $sql = 'SELECT id, regtime FROM patients WHERE specialistas = :specialistas AND aptarnautas = false;';
+        echo "aha";
         $stmt = $this->pdo->prepare($sql);
+        echo "aha";
         $stmt->bindValue(':specialistas', $specialistas);
+        echo "aha";
         $stmt->execute();
-        echo "LINE";
+        echo "aha";
+
         $smtToSwap = false;
         $helpid1 = $helpid2 = 0;
 
@@ -181,14 +185,14 @@ class dbpatient
                 $smtToSwap = true;
 
                 if($regTime == $row['regtime']){ $helpid1 = $row['id']; }
-                elseif($regTime < $row['regtime']) 
+                elseif(strtotime($regTime) < strtotime($row['regtime'])) 
                 {
                     $helpid2 = $row['id'];
                     break;
                 }
             }
         }
-        echo "LINE";
+
         if(!$smtToSwap) { return; }
 
         //WORKS TILL HERE
@@ -202,7 +206,7 @@ class dbpatient
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $duomenys1 = $row['regtime'];
         }
-        echo "LINE";
+
         $sql ='SELECT regtime FROM patients WHERE id = :id;';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $helpid2);
@@ -221,7 +225,7 @@ class dbpatient
         $stmt->bindValue(':id', $helpid2);
 
         $stmt->execute();
-        echo "LINE";
+
         $sql = 'UPDATE patients '
         . 'SET regtime = :regtime '
         . 'WHERE id = :id;';
