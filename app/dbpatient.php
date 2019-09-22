@@ -64,9 +64,11 @@ class dbpatient
         
         $stmt->execute();
 
-        $stmt = $this->pdo->query('SELECT id '
+        $sql = 'SELECT id '
         . 'FROM patients '
-        . 'WHERE name=:name AND regtime=:regtime;');
+        . 'WHERE name=:name AND regtime=:regtime;';
+
+        $stmt = $this->pdo->query($sql);
 
         $stmt->bindValue(':name', $name);
         $stmt->bindValue(':regtime', $time);
