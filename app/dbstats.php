@@ -55,6 +55,8 @@ class dbstats
         for($i=0;$i<sizeof($laikai);$i+=2){
             echo $laikai[$i] . " - " . $laikai[$i+1] . "<br>";
         }
+
+        if(sizeof($laikai) == 0) { echo "Siūlome ateiti iš anksto, nes dažnai būna užimta.";}
     }
 }
 
