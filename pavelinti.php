@@ -12,9 +12,11 @@ try {
 
     $pdo = Connection::get()->connect();
     $stockDB = new dbpatient($pdo);
-    $newTime = $stockDB->pavelinti($name, $regTime, $specialistas);
+    $stockDB->pavelinti($name, $regTime, $specialistas);
 
-    header('Location: laukimoLangas.php?id=' . $_GET['id']);
+    $str = 'Location: laukimoLangas.php?id=' . $_GET['id'];
+
+    header($str);
 } catch (\PDOException $e) {
     echo $e->getMessage();
 }

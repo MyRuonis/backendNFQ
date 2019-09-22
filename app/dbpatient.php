@@ -198,7 +198,7 @@ class dbpatient
         $stmt->bindValue(':id', $helpid1);
         $stmt->execute();
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $duomenys1 = $row['name'];
+            $duomenys1 = $row['regtime'];
         }
 
         $sql ='SELECT * FROM patients WHERE id = :id;';
@@ -206,27 +206,27 @@ class dbpatient
         $stmt->bindValue(':id', $helpid2);
         $stmt->execute();
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $duomenys2 = $row['name'];
+            $duomenys2 = $row['regtime'];
         }
 
         $sql = 'UPDATE patients '
-        . 'SET name = :name '
+        . 'SET regtime = :regtime '
         . 'WHERE id = :id;';
 
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->bindValue(':name', $duomenys1);
+        $stmt->bindValue(':regtime', $duomenys1);
         $stmt->bindValue(':id', $helpid2);
 
         $stmt->execute();
 
         $sql = 'UPDATE patients '
-        . 'SET name = :name '
+        . 'SET regtime = :regtime '
         . 'WHERE id = :id;';
 
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->bindValue(':name', $duomenys2);
+        $stmt->bindValue(':regtime', $duomenys2);
         $stmt->bindValue(':id', $helpid1);
 
         $stmt->execute();
