@@ -7,12 +7,12 @@ use namesql\dbpatient as dbpatient;
 
 try {
     $name = $_GET['name'];
-    $time = $_GET['regtime'];
+    $regTime = $_GET['regtime'];
     $specialistas = $_GET['specialistas'];
 
     $pdo = Connection::get()->connect();
     $stockDB = new dbpatient($pdo);
-    $newTime = $stockDB->pavelinti($name, $time, $specialistas);
+    $newTime = $stockDB->pavelinti($name, $regTime, $specialistas);
 
     header('Location: laukimoLangas.php?id=' . $_GET['id']);
 } catch (\PDOException $e) {
