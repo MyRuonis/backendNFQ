@@ -22,11 +22,11 @@ class dbdoc {
             . 'INNER JOIN stats ON docs.name=stats.specialistas;');
 
             while ($row2 = $stmt1->fetch(\PDO::FETCH_ASSOC)) {
-                echo $row2['diena'] . " " . $row2['name'] . " " . $row['aptarnautiklientai'] . "<br>";
+                echo $row2['diena'] . " " . $row2['name'] . " " . $row2['aptarnautiklientai'] . "<br>";
                 if($row2['diena'] == date("Y/m/d") && $row['name'] == $row2['name']){
                     $aptarnautiSnd += 1;
                 }
-                $aptarnautiIsViso = $row['docs.aptarnautiklientai'];
+                $aptarnautiIsViso = $row2['aptarnautiklientai'];
             }
 
             $stocks[] = [
