@@ -36,6 +36,7 @@
   <thead>
     <tr>
       <th scope="col">Laikas Nuo - Iki</th>
+      <th scope="col">Specialistas</th>
     </tr>
   </thead>
   <tbody>
@@ -52,11 +53,16 @@
 
             $stockDB = new dbstats($pdo);
 
-            $stocks = $stockDB->laisva("Dantistas");
+            $specialistas = $_GET['spec'];
+
+            $stocks = $stockDB->laisva($specialistas);
         } catch (\PDOException $e) {
             echo $e->getMessage();
         }
         ?>
+      </td>
+      <td>
+        <?php echo $specialistas; ?>
       </td>
     </tr>
   </tbody>

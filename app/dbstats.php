@@ -27,15 +27,30 @@ class dbstats
         }
 
         $laikai = array();
-        $galimasNuo = "";
+
+        $galimasNuo = "08:00:00";
+        $galimasIki = "18:00:00";
 
         foreach ($stocks as $stock){
-            if ($galimasNuo != "" && strtotime($stock['laikasnuo']) > strtotime($galimasNuo)){
-                $laikai[] = $galimasNuo;
-                $laikai[] = $stock['laikasnuo'];
+            if (strtotime($stock['laikasnuo']) > strtotime($galimasNuo)) {
+                if(strtotime($stock['laikasnuo']) > strtotime($galimasIki)) {
+                    $laikai[] = $galimasNuo;
+                    $laikai[] = $galimasIki;
+                    break;
+                }
+                else{
+                    $laikai[] = $galimasNuo;
+                    $laikai[] = $stock['laikasnuo'];
+                }
             }
 
             $galimasNuo = $stock['laikasiki'];
+        }
+
+        if(strtotime($galimasNuo) < strtotime($galimasIki))
+        {
+            $laikai[] = $galimasNuo;
+            $laikai[] = $galimasIki;
         }
 
         for($i=0;$i<sizeof($laikai);$i+=2){
