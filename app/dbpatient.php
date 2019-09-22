@@ -64,13 +64,11 @@ class dbpatient
         
         $stmt->execute();
 
-        $sql = 'SELECT id '
-        . 'FROM patients '
-        . 'WHERE name=:name AND regtime=:regtime;';
+        $sql = 'SELECT id FROM patients WHERE name=:name AND regtime=:regtime;';
 
         echo "Line<br>";
 
-        $stmt1 = $this->pdo->query($sql);
+        $stmt1 = $this->pdo->prepare($sql);
 
         echo "Line<br>";
 
