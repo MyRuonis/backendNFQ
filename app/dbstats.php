@@ -30,6 +30,8 @@ class dbstats
         $galimasNuo = "08:00:00";
         $galimasIki = "17:00:00";
 
+        echo strtotime($stocks[0]['laikasnuo']) . " " . strtotime($galimasNuo) . "<br>";
+
         if(strtotime($stocks[0]['laikasnuo']) > strtotime($galimasNuo))
         {
             $laikai[] = $galimasNuo;
