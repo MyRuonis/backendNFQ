@@ -41,7 +41,7 @@ if($boolean)
         echo "Įvyko klaida, kreipkitės telefonu";
     }
 } else {
-    echo "Įvyko klaida, kreipkitės telefonu";
+    echo "Įvyko klaida, kreipkitės telefonu.";
 }
 
 function test_input($data) {
