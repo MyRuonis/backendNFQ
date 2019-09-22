@@ -49,6 +49,8 @@ class dbstats
         if(strtotime($galimasNuo) < strtotime($galimasIki)) {
             $laikai[] = $galimasNuo;
             $laikai[] = $galimasIki;
+        } elseif (strtotime($galimasIki) < strtotime($laikai[sizeof($laikai)-1])){
+            $laikai[sizeof($laikai)-1] = $galimasIki;
         }
 
         for($i=0;$i<sizeof($laikai);$i+=2){
