@@ -100,8 +100,6 @@ class dbpatient
             }
         }
 
-        echo $time . "<br>";
-
         $aptarnaujamasKlientas = true;
         $time2 = 0;
 
@@ -110,7 +108,6 @@ class dbpatient
                 . 'WHERE aptarnautas = false;');
         $klientuKiekis = 0;
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            echo strtotime($row['regtime']) . " " . strtotime($regTime) . "<br>";
             if($row['specialistas'] == $specialistas && strtotime($row['regtime']) < strtotime($regTime))
             {
                 $klientuKiekis += 1;
@@ -129,8 +126,6 @@ class dbpatient
                     $regtime = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $row['regtime']);
                     sscanf($regtime, "%d:%d:%d", $hours, $minutes, $seconds);
                     $regtime = $hours * 3600 + $minutes * 60 + $seconds;
-
-                    echo $timenow . " " . $regtime . "<br>";
 
                     $time2 = $timenow - $regtime;
 
