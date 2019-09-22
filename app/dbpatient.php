@@ -144,7 +144,13 @@ class dbpatient
         if ($klientuKiekis == 0) $time = 0;
         else $time = $time * $klientuKiekis - $time2;
 
-        return date("H:i:s", $time);
+        $hours = floor($time / 3600);
+        $mins = floor($time / 60 % 60);
+        $secs = floor($time % 60);
+
+        $time = sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
+
+        return $time;
     }
 
     public function pavelinti($name, $regTime, $specialistas){
