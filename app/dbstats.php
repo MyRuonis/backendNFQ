@@ -37,7 +37,7 @@ class dbstats
         }
 
         foreach ($stocks as $stock){
-            if (strtotime($stock['laikasnuo']) > strtotime($galimasNuo)){
+            if ($galimasNuo != "08:00:00" && strtotime($stock['laikasnuo']) > strtotime($galimasNuo)){
                 $laikai[] = $galimasNuo;
                 $laikai[] = $stock['laikasnuo'];
             }
