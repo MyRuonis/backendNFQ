@@ -30,6 +30,8 @@ class dbstats
         $galimasNuo = "08:00:00";
         $galimasIki = "17:00:00";
 
+        $lastLaikas = "";
+
         foreach ($stocks as $stock){
             if($galimasNuo == "08:00:00" && $stock['laikasnuo'] != $galimasNuo){
                 $laikai[] = $galimasNuo;
@@ -42,6 +44,12 @@ class dbstats
             }
 
             $galimasNuo = $stock['laikasiki'];
+        }
+
+        if(strtotime($galimasNuo) < strtotime($galimasIki))
+        {
+            $laikai[] = $galimasNuo;
+            $laikai[] = $galimasIki;
         }
 
         for($i=0;$i<sizeof($laikai);$i+=2){
