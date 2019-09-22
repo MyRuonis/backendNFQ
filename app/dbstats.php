@@ -46,8 +46,7 @@ class dbstats
             $galimasNuo = $stock['laikasiki'];
         }
 
-        if(strtotime($galimasNuo) < strtotime($galimasIki))
-        {
+        if(strtotime($galimasNuo) < strtotime($galimasIki)) {
             $laikai[] = $galimasNuo;
             $laikai[] = $galimasIki;
         }
