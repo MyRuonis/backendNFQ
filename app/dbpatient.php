@@ -178,6 +178,7 @@ class dbpatient
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             if(strtotime($regTime) <= strtotime($row['regtime']))
             {
+                echo $regtime . " " . $row['regtime'] . "<br>";
                 $smtToSwap = true;
 
                 if($regTime == $row['regtime']){ $helpid1 = $row['id']; }
@@ -212,23 +213,19 @@ class dbpatient
         $sql = 'UPDATE patients '
         . 'SET regtime = :regtime '
         . 'WHERE id = :id;';
-        echo "HERe<br>";
         $stmt = $this->pdo->prepare($sql);
 
         $stmt->bindValue(':regtime', $duomenys1);
         $stmt->bindValue(':id', $helpid2);
-        echo "HERe<br>";
         $stmt->execute();
 
         $sql = 'UPDATE patients '
         . 'SET regtime = :regtime '
         . 'WHERE id = :id;';
-        echo "HERe<br>";
         $stmt = $this->pdo->prepare($sql);
 
         $stmt->bindValue(':regtime', $duomenys2);
         $stmt->bindValue(':id', $helpid1);
-        echo "HERe<br>";
         $stmt->execute();
     }
 
