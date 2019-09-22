@@ -31,11 +31,10 @@ if($boolean)
         date_default_timezone_set('Europe/Vilnius');
         $time = date("H:i:s");
     
-        $insertDemo->insertLine($vard, $specialistas, $time);
+        $id = $insertDemo->insertLine($vard, $specialistas, $time);
     
         echo "Užregistruota sėkmingai.<br>";
-        echo "<a href='laukimoLangas.php?vard=" . $vard . "&regtime=" . $time . "&spec=" . $specialistas . "'>Laukimo langas</a>";
-        //date_default_timezone_set('Europe/London');
+        echo "<a href='laukimoLangas.php?id=" . $id . "'>Laukimo langas</a>";
     
     } catch (\PDOException $e) {
         //echo $e->getMessage();

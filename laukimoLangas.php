@@ -9,6 +9,10 @@ try {
 
     $stockDB = new dbpatient($pdo);
 
+    $id = $_GET['id'];
+
+    $duom = $stockDB->readLine($id);
+
 } catch (\PDOException $e) {
     //echo $e->getMessage();
     echo "Klaida";
@@ -59,9 +63,9 @@ try {
         <tbody>
             <tr>
                 <form>
-                <td><?php echo $_GET['vard']; ?></td>
-                <td><?php echo $stockDB->kiekLaukti($_GET['vard'], $_GET['regtime'], $_GET['spec']);?></td>
-                <td><?php echo $_GET['spec']; ?></td>
+                <td><?php echo $duom[0]; ?></td>
+                <td><?php echo $stockDB->kiekLaukti($duom[0], $duom[1], $duom[2]);?></td>
+                <td><?php echo $duom[2]; ?></td>
                 <td><?php echo "<a href='/atsaukti.php?name=" . htmlspecialchars($_GET['vard']) . "&regtime=" . htmlspecialchars($_GET['regtime']) . "&specialistas=" . htmlspecialchars($_GET['spec']) . "' class='btn btn-dark'>Atšaukti</a>"; ?></td>
                 <td><?php echo "<a href='/pavelinti.php?name=" . htmlspecialchars($_GET['vard']) . "&regtime=" . htmlspecialchars($_GET['regtime']) . "&specialistas=" . htmlspecialchars($_GET['spec']) . "' class='btn btn-dark'>Pavėlinti</a>"; ?></td>
             </tr>

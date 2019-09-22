@@ -63,6 +63,22 @@ class dbpatient
         $stmt->bindValue(':specialistas', $specialistas);
         
         $stmt->execute();
+
+        $stmt = $this->pdo->query('SELECT id '
+        . 'FROM patients '
+        . 'WHERE name=:name AND regtime=:regtime;');
+
+        $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':regtime', $time);
+        $stmt->execute();
+
+        $id = 0;
+
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $id = $row['id'];
+        }
+
+        return $id;
     }
 
     public function all() {
@@ -226,6 +242,21 @@ class dbpatient
         $stmt->bindValue(':specialistas', $specialistas);
         
         $stmt->execute();
+    }
+
+    public function readLine($id){
+        $sql = 'SELECT name, regtime, specialistas FROM patients WHERE id=:id;';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+        $arr = [];
+
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $arr = array($row['name'],$row['regtime'],$row['specialistas']);
+        }
+
+        return $arr;
     }
 }
 ?>
