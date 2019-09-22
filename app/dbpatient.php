@@ -100,6 +100,8 @@ class dbpatient
             }
         }
 
+        echo $time . "<br>";
+
         $aptarnaujamasKlientas = true;
         $time2 = 0;
 
@@ -126,6 +128,8 @@ class dbpatient
                     $regtime = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $row['regtime']);
                     sscanf($regtime, "%d:%d:%d", $hours, $minutes, $seconds);
                     $regtime = $hours * 3600 + $minutes * 60 + $seconds;
+
+                    echo $timenow . " " . $regtime . "<br>";
 
                     $time2 = $timenow - $regtime;
 
