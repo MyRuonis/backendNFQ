@@ -169,7 +169,6 @@ class dbpatient
     public function pavelinti($name, $regTime, $specialistas){
         $sql = 'SELECT id, name, regtime FROM patients WHERE specialistas = :specialistas AND aptarnautas = false;';
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':regtime', $regTime);
         $stmt->bindValue(':specialistas', $specialistas);
         $stmt->execute();
 
