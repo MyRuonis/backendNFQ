@@ -22,6 +22,7 @@ class dbdoc {
             . 'FULL OUTER JOIN stats ON docs.name=stats.specialistas;');
 
             while ($row2 = $stmt1->fetch(\PDO::FETCH_ASSOC)) {
+                echo $row2['stats.diena'] . " " . $row2['docs.name'] . " " . $row['docs.aptarnautiklientai'] . "<br>";
                 if($row2['stats.diena'] == date("Y/m/d") && $row['name'] == $row2['docs.name']){
                     $aptarnautiSnd += 1;
                 }
