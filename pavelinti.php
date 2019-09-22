@@ -16,8 +16,9 @@ try {
 
     $str = 'Location: laukimoLangas.php?id=' . $_GET['id'];
 
-    //header($str);
+    header($str);
 } catch (\PDOException $e) {
-    echo $e->getMessage();
+    //echo $e->getMessage();
+    echo "Klaida!";
 }
 ?>

@@ -176,7 +176,6 @@ class dbpatient
         $helpid1 = $helpid2 = 0;
 
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            echo $row['regtime'] . "<br>";
             if(strtotime($regTime) == strtotime($row['regtime'])){ $helpid1 = $row['id']; }
             elseif(strtotime($regTime) < strtotime($row['regtime']))
             {
