@@ -68,4 +68,8 @@
   </tbody>
 </table>
 
+<a href='statistika.php?spec=Dantistas' class='btn btn-dark'>Dantistas</a>
+<a href='statistika.php?spec=Kardiologas' class='btn btn-dark'>Kardiologas</a>
+<a href='statistika.php?spec=Okulistas' class='btn btn-dark'>Okulistas</a>
+
 </body>
