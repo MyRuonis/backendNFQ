@@ -19,7 +19,7 @@ class dbdoc {
             $aptarnautiIsViso = 0;
 
             $stmt1 = $this->pdo->query('SELECT docs.name, stats.diena, docs.aptarnautiklientai FROM docs '
-            . 'INNER JOIN stats ON docs.name=stats.specialistas;');
+            . 'LEFT OUTER JOIN stats ON docs.name=stats.specialistas;');
 
             while ($row2 = $stmt1->fetch(\PDO::FETCH_ASSOC)) {
                 if($row2['stats.diena'] == date("Y/m/d") && $row['name'] == $row2['docs.name']){
