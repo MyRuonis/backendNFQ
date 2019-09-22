@@ -16,6 +16,7 @@ try {
 
     header('Location: specialistas.php');
 } catch (\PDOException $e) {
-    echo $e->getMessage();
+    //echo $e->getMessage();
+    echo "Klaida.";
 }
 ?>
