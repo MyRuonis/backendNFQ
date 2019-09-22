@@ -40,7 +40,7 @@ class dbpatient
         $stmt->execute();
 
         $helptime = 0; $helptime2 = "20:00:00";
-        $sql = 'SELECT bendrassugaistaslaikas WHERE name=:name;';
+        $sql = 'SELECT bendrassugaistaslaikas FROM docs WHERE name=:name;';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':name', $specialistas);
         $stmt->execute();
