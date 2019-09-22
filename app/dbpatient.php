@@ -119,7 +119,15 @@ class dbpatient
                     $timenow = date("H:i:s");
                     //date_default_timezone_set('Europe/London');
 
-                    $time2 = strtotime($timenow) - strtotime($row['regtime']);
+                    $timenow = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $timenow);
+                    sscanf($timenow, "%d:%d:%d", $hours, $minutes, $seconds);
+                    $timenow = $hours * 3600 + $minutes * 60 + $seconds;
+
+                    $regtime = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $row['regtime']);
+                    sscanf($regtime, "%d:%d:%d", $hours, $minutes, $seconds);
+                    $regtime = $hours * 3600 + $minutes * 60 + $seconds;
+
+                    $time2 = $timenow - $regtime;
 
                     if($time2 > $time)
                     {
