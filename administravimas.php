@@ -54,7 +54,7 @@ try {
   Vardas: <input type="text" name="vardas"><br>
   Daktaras: <select name="specialistas" form="forma">
             <?php foreach($stocks as $stock) :
-                  $value=htmlspecialchars($stock['name']);
+                  $value=$stock['name'];
                   echo "<option value=". $value . ">" . $value . "</option>";
               endforeach;
             ?>

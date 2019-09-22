@@ -68,8 +68,24 @@
   </tbody>
 </table>
 
-<a href='statistika.php?spec=Dantistas' class='btn btn-dark'>Dantistas</a>
-<a href='statistika.php?spec=Kardiologas' class='btn btn-dark'>Kardiologas</a>
-<a href='statistika.php?spec=Okulistas' class='btn btn-dark'>Okulistas</a>
+<?php
+
+use namesql\dbdoc as dbdoc;
+
+try {
+    $pdo = Connection::get()->connect();
+
+    $stockDB = new dbdoc($pdo);
+
+    $stocks = $stockDB->all();
+
+    foreach($stocks as $stock){
+      echo "<a href='statistika.php?spec=" . $stock['name'] . "' class='btn btn-dark'>" . $stock['name'] . "</a>";
+    }
+} catch (\PDOException $e) {
+    echo $e->getMessage();
+}
+
+?>
 
 </body>
