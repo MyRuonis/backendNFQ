@@ -44,7 +44,7 @@ class dbpatient
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':name', $specialistas);
         $stmt->execute();
-        while ($row = $stmt1->fetch(\PDO::FETCH_ASSOC)) {
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $helptime = $row['bendrassugaistaslaikas'];
         }
         echo "HERE<br>";
