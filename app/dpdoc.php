@@ -18,11 +18,11 @@ class dbdoc {
             $aptarnautiSnd = 0;
             $aptarnautiIsViso = 0;
 
-            $stmt1 = $this->pdo->query('SELECT docs.name, stats.diena, docs.aptarnautiklientai FROM docs '
+            $stmt1 = $this->pdo->query('SELECT docs.name as name, stats.diena as diena, docs.aptarnautiklientai as klientai FROM docs '
             . 'FULL OUTER JOIN stats ON docs.name=stats.specialistas;');
 
             while ($row2 = $stmt1->fetch(\PDO::FETCH_ASSOC)) {
-                echo $row2['stats.diena'] . " " . $row2['docs.name'] . " " . $row['docs.aptarnautiklientai'] . "<br>";
+                echo $row2['diena'] . " " . $row2['name'] . " " . $row['klientai'] . "<br>";
                 if($row2['stats.diena'] == date("Y/m/d") && $row['name'] == $row2['docs.name']){
                     $aptarnautiSnd += 1;
                 }
