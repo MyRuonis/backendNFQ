@@ -64,14 +64,22 @@ class dbpatient
         
         $stmt->execute();
 
+        echo "Line<br>";
+
         $sql = 'SELECT id '
         . 'FROM patients '
         . 'WHERE name=:name AND regtime=:regtime;';
 
+        echo "Line<br>";
+
         $stmt = $this->pdo->query($sql);
+
+        echo "Line<br>";
 
         $stmt->bindValue(':name', $name);
         $stmt->bindValue(':regtime', $time);
+
+        echo "Line<br>";
         $stmt->execute();
 
         $id = 0;
@@ -79,6 +87,8 @@ class dbpatient
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $id = $row['id'];
         }
+
+        echo "Line<br>";
 
         return $id;
     }
