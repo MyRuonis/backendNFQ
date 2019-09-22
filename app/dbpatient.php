@@ -52,14 +52,14 @@ class dbpatient
         $stmt->execute();
     }
 
-    public function insertLine($name, $specialistas, $regtime) {
+    public function insertLine($name, $specialistas, $time) {
 
         $sql = 'INSERT INTO patients(name, regTime, endTime, aptarnautas, specialistas) VALUES (:name, :regTime, :endTime, FALSE, :specialistas);';
         $stmt = $this->pdo->prepare($sql);
         
         $stmt->bindValue(':name', $name);
-        $stmt->bindValue(':regTime', $regTime);
-        $stmt->bindValue(':endTime', $regTime);
+        $stmt->bindValue(':regTime', $time);
+        $stmt->bindValue(':endTime', $time);
         $stmt->bindValue(':specialistas', $specialistas);
         
         $stmt->execute();

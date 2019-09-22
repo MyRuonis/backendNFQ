@@ -29,7 +29,7 @@ if($boolean)
         $insertDemo = new dbpatient($pdo);
 
         date_default_timezone_set('Europe/Vilnius');
-        $time=date("H:i:s");
+        $time = date("H:i:s");
     
         $insertDemo->insertLine($vard, $specialistas, $time);
     
