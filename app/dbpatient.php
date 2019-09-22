@@ -234,12 +234,12 @@ class dbpatient
         return $duomenys2[1];
     }
 
-    public function atsaukti($name, $regTime, $specialistas){
+    public function atsaukti($name, $time, $specialistas){
         $sql = 'DELETE FROM patients WHERE name = :name AND regtime =:regtime AND specialistas = :specialistas; ';
         $stmt = $this->pdo->prepare($sql);
         
         $stmt->bindValue(':name', $name);
-        $stmt->bindValue(':regtime', $regTime);
+        $stmt->bindValue(':regtime', $time);
         $stmt->bindValue(':specialistas', $specialistas);
         
         $stmt->execute();
