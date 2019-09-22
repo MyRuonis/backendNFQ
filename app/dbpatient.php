@@ -17,6 +17,16 @@ class dbpatient
 
         //date_default_timezone_set('Europe/London');
 
+        $sql = 'INSERT INTO stats(diena, laikasnuo, laikasiki, specialistas) VALUES (:diena, :laikasnuo, :laikasiki, :specialistas);';
+        $stmt = $this->pdo->prepare($sql);
+        
+        $stmt->bindValue(':diena', date("Y/m/d"));
+        $stmt->bindValue(':laikasnuo', $time);
+        $stmt->bindValue(':laikasiki', $time2);
+        $stmt->bindValue(':specialistas', $specialistas);
+        
+        $stmt->execute();
+
         $sql = 'UPDATE patients '
             . 'SET endtime = :time, '
             . 'aptarnautas = true '
