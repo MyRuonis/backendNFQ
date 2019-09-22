@@ -168,13 +168,11 @@ class dbpatient
 
     public function pavelinti($name, $regTime, $specialistas){
         $sql = 'SELECT id, regtime FROM patients WHERE specialistas = :specialistas AND aptarnautas = false;';
-        echo "aha";
         $stmt = $this->pdo->prepare($sql);
-        echo "aha";
         $stmt->bindValue(':specialistas', $specialistas);
-        echo "aha";
         $stmt->execute();
-        echo "aha";
+
+        echo "LINE<br>";
 
         $smtToSwap = false;
         $helpid1 = $helpid2 = 0;
@@ -195,7 +193,7 @@ class dbpatient
 
         if(!$smtToSwap) { return; }
 
-        //WORKS TILL HERE
+        echo "LINE<br>";
 
         $duomenys1 = $duomenys2 = 0;
 
@@ -214,6 +212,8 @@ class dbpatient
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $duomenys2 = $row['regtime'];
         }
+
+        echo "LINE<br>";
 
         $sql = 'UPDATE patients '
         . 'SET regtime = :regtime '
