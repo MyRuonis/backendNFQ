@@ -14,7 +14,7 @@ try {
     $stockDB = new dbpatient($pdo);
     $stockDB->atsaukti($name, $time, $specialistas);
 
-    header('Location: index.php?id=' . $_GET['id']);
+    header('Location: index.php');
 } catch (\PDOException $e) {
     echo $e->getMessage();
 }
